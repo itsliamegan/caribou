@@ -15,4 +15,8 @@ export class BrowserTestCase extends TestCase {
     global.window = undefined
     global.document = undefined
   }
+
+  element(selector) {
+    return document.querySelector(selector)
+  }
 }

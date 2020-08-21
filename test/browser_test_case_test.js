@@ -50,4 +50,29 @@ export class BrowserTestCaseTest extends TestCase {
 
     this.assertEqual(3, paragraphs.length)
   }
+
+  async "test queries for a single element"() {
+    let element
+
+    class ExampleBrowserTestCase extends BrowserTestCase {
+      html = `
+        <html>
+          <body>
+            <p id="element"></p>
+          </body>
+        </html>
+      `
+
+      "test method"() {
+        element = this.element("#element")
+      }
+    }
+    let bus = stub("bus")
+    bus.stubs.method("post")
+    let test = new ExampleBrowserTestCase(bus)
+
+    await test.run()
+
+    this.assertEqual("element", element.id)
+  }
 }
