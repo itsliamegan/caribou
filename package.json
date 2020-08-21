@@ -1,0 +1,17 @@
+{
+  "name": "caribou",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Liam Egan",
+  "repository": "https://github.com/itsliamegan/caribou",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./bin/caribou"
+  },
+  "dependencies": {
+    "esm": "^3.2.25",
+    "globby": "^11.0.1",
+    "jsdom": "^16.4.0"
+  },
+  "devDependencies": {}
+}

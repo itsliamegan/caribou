@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+require = require("esm")(module)
+
+let { Caribou } = require("../src/caribou.js")
+let caribou = new Caribou(process.cwd(), process.argv, process.stdin, process.stdout)
+caribou.run()
