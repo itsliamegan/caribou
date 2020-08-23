@@ -7,6 +7,10 @@ export class Stub {
     return new TypeDelegate(this)
   }
 
+  toString() {
+    return `stub("${this.name}")`
+  }
+
   stubProperty(property, value) {
     this[property] = value
   }
