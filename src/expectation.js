@@ -18,6 +18,10 @@ export class Expectation {
   }
 
   satisfiedBy(invocation) {
+    if (!this.expectsArgs) {
+      return invocation.matches(this.mock, this.method)
+    }
+
     return invocation.matches(this.mock, this.method, this.expectedArgs || [])
   }
 

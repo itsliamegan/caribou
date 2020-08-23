@@ -33,6 +33,22 @@ export class MockTest extends TestCase {
     this.assert(uncalled.unsatisfied)
   }
 
+  "test verifies that a method was called with any args by default"() {
+    let calledWithNoArgs = new Mock("calledWithNoArgs")
+    let calledWithSomeArgs = new Mock("calledWithSomeArgs")
+
+    calledWithNoArgs.expects("method")
+    calledWithSomeArgs.expects("method")
+
+    calledWithNoArgs.method()
+    calledWithSomeArgs.method("arg", "arg")
+
+    this.assert(calledWithNoArgs.satisfied)
+    this.assert(calledWithSomeArgs.satisfied)
+    this.assertNot(calledWithNoArgs.receivedUnexpectedInvocation)
+    this.assertNot(calledWithSomeArgs.receivedUnexpectedInvocation)
+  }
+
   "test verifies that a method was called with specific args"() {
     let calledWithNoArgs = new Mock("calledWithNoArgs")
     let calledWithIncorrectArgs = new Mock("calledWithIncorrectArgs")

@@ -9,11 +9,17 @@ export class Invocation {
   }
 
   matches(receiver, method, args) {
-    return (
-      this.receiver == receiver &&
-      this.method == method &&
-      deepEqual(this.args, args)
-    )
+    if (receiver && method && args) {
+      return (
+        this.receiver == receiver &&
+        this.method == method &&
+        deepEqual(this.args, args)
+      )
+    } else if (receiver && method) {
+      return this.receiver == receiver && this.method == method
+    } else if (receiver) {
+      return this.receiver == receiver
+    }
   }
 
   toString() {
