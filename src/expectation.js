@@ -11,6 +11,8 @@ export class Expectation {
 
   with(...args) {
     this.expectedArgs = args
+
+    return this
   }
 
   returns(value) {
