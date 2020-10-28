@@ -1,4 +1,4 @@
-export class Stub {
+export class InstanceStub {
   constructor(name) {
     this.name = name
   }

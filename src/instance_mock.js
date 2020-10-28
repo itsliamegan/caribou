@@ -1,9 +1,9 @@
-import { Stub } from "./stub"
+import { InstanceStub } from "./instance_stub"
 import { Expectation } from "./expectation"
 import { AssertionError } from "./errors/assertion_error"
 import { Invocation } from "./invocation"
 
-export class Mock extends Stub {
+export class InstanceMock extends InstanceStub {
   constructor(name) {
     super(name)
 
@@ -75,7 +75,7 @@ export class Mock extends Stub {
   }
 
   invoked(method) {
-    return this.invocations.filter(invocation => invocation.method == method).length > 0
+    return this.invocations.some(invocation => invocation.matches(this, method))
   }
 
   invokedWithArgs(method, args) {
@@ -90,8 +90,4 @@ export class Mock extends Stub {
       return returnValue
     })
   }
-}
-
-export function mock(name) {
-  return new Mock(name)
 }

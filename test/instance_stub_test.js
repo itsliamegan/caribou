@@ -1,9 +1,9 @@
-import { TestCase } from ".."
-import { Stub } from "../src/stub"
+import { TestCase } from "../src"
+import { InstanceStub } from "../src/instance_stub"
 
-export class StubTest extends TestCase {
+export class InstanceStubTest extends TestCase {
   "test stubbing properties"() {
-    let stub = new Stub("stub")
+    let stub = new InstanceStub("stub")
 
     stub.stubs.property("property").value("value")
 
@@ -11,7 +11,7 @@ export class StubTest extends TestCase {
   }
 
   "test stubbing methods"() {
-    let stub = new Stub("stub")
+    let stub = new InstanceStub("stub")
 
     stub.stubs.method("method").returns("value")
 

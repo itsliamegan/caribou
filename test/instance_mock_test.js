@@ -1,10 +1,10 @@
 import { TestCase } from "../src"
-import { Mock } from "../src/mock"
+import { InstanceMock } from "../src/instance_mock"
 import { AssertionError } from "../src/errors/assertion_error"
 
-export class MockTest extends TestCase {
+export class InstanceMockTest extends TestCase {
   "test expecting a method stubs that method"() {
-    let mock = new Mock("mock")
+    let mock = new InstanceMock("mock")
 
     mock.expects("method").returns("value")
 
@@ -12,7 +12,7 @@ export class MockTest extends TestCase {
   }
 
   "test expecting a method multiple times uses the last return value"() {
-    let mock = new Mock("mock")
+    let mock = new InstanceMock("mock")
 
     mock.expects("method").returns("first")
     mock.expects("method").returns("second")
@@ -22,8 +22,8 @@ export class MockTest extends TestCase {
   }
 
   "test verifies that a method was called"() {
-    let called = new Mock("called")
-    let uncalled = new Mock("uncalled")
+    let called = new InstanceMock("called")
+    let uncalled = new InstanceMock("uncalled")
 
     called.expects("method")
     uncalled.expects("method")
@@ -34,12 +34,11 @@ export class MockTest extends TestCase {
   }
 
   "test verifies that a method was called with any args by default"() {
-    let calledWithNoArgs = new Mock("calledWithNoArgs")
-    let calledWithSomeArgs = new Mock("calledWithSomeArgs")
+    let calledWithNoArgs = new InstanceMock("calledWithNoArgs")
+    let calledWithSomeArgs = new InstanceMock("calledWithSomeArgs")
 
     calledWithNoArgs.expects("method")
     calledWithSomeArgs.expects("method")
-
     calledWithNoArgs.method()
     calledWithSomeArgs.method("arg", "arg")
 
@@ -50,9 +49,9 @@ export class MockTest extends TestCase {
   }
 
   "test verifies that a method was called with specific args"() {
-    let calledWithNoArgs = new Mock("calledWithNoArgs")
-    let calledWithIncorrectArgs = new Mock("calledWithIncorrectArgs")
-    let calledWithCorrectArgs = new Mock("calledWithCorrectArgs")
+    let calledWithNoArgs = new InstanceMock("calledWithNoArgs")
+    let calledWithIncorrectArgs = new InstanceMock("calledWithIncorrectArgs")
+    let calledWithCorrectArgs = new InstanceMock("calledWithCorrectArgs")
 
     calledWithNoArgs.expects("method").with("arg1", "arg2")
     calledWithIncorrectArgs.expects("method").with("arg1", "arg2")
@@ -67,9 +66,9 @@ export class MockTest extends TestCase {
   }
 
   "test verifies that a method was called multiple times with different args"() {
-    let notCalled = new Mock("notCalled")
-    let calledOnce = new Mock("calledOnce")
-    let calledTwice = new Mock("calledTwice")
+    let notCalled = new InstanceMock("notCalled")
+    let calledOnce = new InstanceMock("calledOnce")
+    let calledTwice = new InstanceMock("calledTwice")
 
     notCalled.expects("method").with("arg1")
     notCalled.expects("method").with("arg2")
@@ -87,7 +86,7 @@ export class MockTest extends TestCase {
   }
 
   "test verifies that a method was only called with the correct args"() {
-    let mock = new Mock("mock")
+    let mock = new InstanceMock("mock")
 
     mock.expects("method").with("arg")
     mock.method("arg")
@@ -97,8 +96,8 @@ export class MockTest extends TestCase {
   }
 
   "test throws an error when verified if it's unsatisfied"() {
-    let satisfied = new Mock("satisfied")
-    let unsatisfied = new Mock("unsatisfied")
+    let satisfied = new InstanceMock("satisfied")
+    let unsatisfied = new InstanceMock("unsatisfied")
 
     satisfied.expects("method")
     unsatisfied.expects("method")
