@@ -1,4 +1,4 @@
-import globby from "globby"
+import glob from "fast-glob"
 import path from "path"
 
 export class Glob {
@@ -8,7 +8,7 @@ export class Glob {
   }
 
   filenames() {
-    return globby(this.absolute_pattern)
+    return glob(this.absolute_pattern)
   }
 
   get absolute_pattern() {

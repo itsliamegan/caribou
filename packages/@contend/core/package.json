@@ -18,7 +18,7 @@
     "@contend/assertions": "^0.2.0",
     "@contend/support": "^0.2.0",
     "esm": "^3.2.25",
-    "globby": "^11.0.1",
+    "fast-glob": "^3.2.4",
     "jsdom": "^16.4.0"
   },
   "devDependencies": {}
