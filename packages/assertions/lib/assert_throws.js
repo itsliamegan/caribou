@@ -1,6 +1,6 @@
 import { AssertionError } from "./errors/assertion_error"
 
-export function assert_throws(fn, error_type) {
+export function assert_throws(fn, error_type = Error) {
   let error
 
   try {
