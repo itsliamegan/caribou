@@ -1,12 +1,13 @@
 {
-  "name": "caribou",
-  "version": "0.1.0",
+  "name": "contend",
+  "description": "An xUnit-style testing framework",
+  "version": "0.2.0",
   "license": "MIT",
   "author": "Liam Egan",
-  "repository": "https://github.com/itsliamegan/caribou",
+  "repository": "https://github.com/itsliamegan/contend",
   "main": "lib/index.js",
   "scripts": {
-    "test": "./bin/caribou"
+    "test": "./bin/contend"
   },
   "dependencies": {
     "esm": "^3.2.25",

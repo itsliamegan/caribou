@@ -1,9 +1,9 @@
-# Caribou
+# Contend
 
-Caribou is a JavaScript testing library. It's heavily opinionated and provides a
-variety of built-in tools to avoid having to install and glue together several
-third-party packages. It provides mechanisms to [define tests](#defining-tests),
-[make assertions](#assertions), [hook into the test
+An xUnit-style testing library for JavaScript. It's heavily opinionated and
+provides a variety of built-in tools to avoid having to install and glue
+together several third-party packages. It provides mechanisms to [define
+tests](#defining-tests), [make assertions](#assertions), [hook into the test
 lifecycle](#lifecycle-hooks), [create mocks and stubs](#mocks-and-stubs), and
 test (limited) [functionality in the browser](#browser-testing).
 
@@ -21,21 +21,21 @@ Install it as a development dependency via your package manager of choice:
 
 ```
 // npm
-$ npm install --save-dev caribou
+$ npm install --save-dev contend
 
 // yarn
-$ yarn add --dev caribou
+$ yarn add --dev contend
 ```
 
 ## Defining Tests
 
-Caribou, in the style of xUnit, defines tests as classes. They should be defined
+Contend, in the style of xUnit, defines tests as classes. They should be defined
 in the "test/" folder at the root of your application. Though not required, it's
 conventional to define isolated unit tests in the "test/unit" folder, and tests
 that validate the collaboration between objects in the "test/integration"
 folder. Each file should be called "{name}_test.js", where {name} is the name of
 the class or function that you're testing. That file should export a class that
-extends one of Caribou's base `TestCase` classes. This class should be named, in
+extends one of Contend's base `TestCase` classes. This class should be named, in
 accordance with the file, {Name}Test, again where {Name} is the name of the
 class or function that you're testing. To define specific scenarios for your
 tests, create methods that start with the word "test". If you like naming your
@@ -46,8 +46,8 @@ string to define the name of a test scenario method.
 Below is an example of a typical test file.
 
 ```js
-import { TestCase } from "caribou"
-import { assert_equal } from "caribou/assertions"
+import { TestCase } from "contend"
+import { assert_equal } from "contend/assertions"
 
 export class ArrayTest extends TestCase {
   "test push and pop"() {
@@ -66,14 +66,14 @@ export class ArrayTest extends TestCase {
 To run all the tests in your application, run the command without any arguments:
 
 ```
-$ ./node_modules/caribou/bin/caribou
+$ ./node_modules/contend/bin/contend
 ```
 
 To run a specific test, pass the test's filename as an argument:
 
 ```
 # Run the test "test/unit/array_test.js"
-$ ./node_modules/caribou/bin/caribou test/unit/array_test.js
+$ ./node_modules/contend/bin/contend test/unit/array_test.js
 ```
 
 To run a group of tests, pass a
@@ -81,16 +81,16 @@ To run a group of tests, pass a
 
 ```
 # Run all the tests in the "test/unit" folder
-$ ./node_modules/caribou/bin/caribou test/unit/**/*_test.js
+$ ./node_modules/contend/bin/contend test/unit/**/*_test.js
 ```
 
 ## Assertions
 
-Caribou currently doesn't provide a wide variety of assertions. It provides the
+Contend currently doesn't provide a wide variety of assertions. It provides the
 basic truth and equality checkers, as well as a couple more specialized ones. If
 you feel any are missing, feel free to [contribute them](#contributing). Below
 are a list of all the assertions, which are available to import from the
-`caribou/assertions` namespace.
+`contend/assertions` namespace.
 
 * `assert(condition, [message])` Asserts that the given condition is truthy
 * `assert_not(condition)` Asserts that the given condition is falsey
@@ -118,7 +118,7 @@ You can hook into the lifecycle of the test runs by defining `setup` and/or
 scenario, and `teardown` is run once after every test scenario.
 
 ```js
-import { TestCase } from "caribou"
+import { TestCase } from "contend"
 
 export class LifecyclesTest extends TestCase {
   setup() {
@@ -146,7 +146,7 @@ doubles](https://martinfowler.com/bliki/TestDouble.html). You can use them to
 test the components of your system in isolation from one another, ensuring that
 messages are passed correctly.
 
-Right now, Caribou doesn't provide any built-ins for spies, but that might
+Right now, Contend doesn't provide any built-ins for spies, but that might
 change in the future.
 
 ### Stubs
@@ -158,7 +158,7 @@ interface.
 The basic syntax is as follows:
 
 ```js
-import { stub } from "caribou/doubles"
+import { stub } from "contend/doubles"
 
 // Create a stub.
 let person = stub("person")
@@ -182,7 +182,7 @@ assert that properties were accessed, the `expects` method doesn't require you
 to specify `property` or `method`:
 
 ```js
-import { mock } from "caribou/doubles"
+import { mock } from "contend/doubles"
 
 // Expect that a method is called.
 let door = mock("door")
@@ -219,7 +219,7 @@ cup.verify()
 You can also use the `stubs` method on a mock:
 
 ```js
-import { mock } from "caribou/doubles"
+import { mock } from "contend/doubles"
 
 // Stub a property on a mock
 let train = mock("train")
@@ -228,7 +228,7 @@ train.stubs.property("number").value(500)
 
 ## Browser Testing
 
-Caribou provides limited features for browser testing using JSDOM. To use
+Contend provides limited features for browser testing using JSDOM. To use
 browser utilities, instead of subclassing `TestCase`, subclass
 `BrowserTestCase`. To define an HTML document that a test case interacts with,
 define an `html` property on your test class.
@@ -242,7 +242,7 @@ There are utility methods available to all subclasses of `BrowserTestCase`:
 Below is an example of creating a browser test.
 
 ```js
-import { BrowserTestCase } from "caribou"
+import { BrowserTestCase } from "contend"
 
 export class TodoListTest extends BrowserTestCase {
   html = `

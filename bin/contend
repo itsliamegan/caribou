@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+require = require("esm")(module)
+
+let { Contend } = require("../lib/contend.js")
+let contend = new Contend(process.cwd(), process.argv, process.stdin, process.stdout)
+contend.run()
