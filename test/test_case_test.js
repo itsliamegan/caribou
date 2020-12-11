@@ -29,15 +29,15 @@ export class TestCaseTest extends TestCase {
   async "test runs all the test methods"() {
     class ExampleTest extends TestCase {
       "test method one"() {
-        this.ranFirstTest = true
+        this.ran_first_test = true
       }
 
       "test method two"() {
-        this.ranSecondTest = true
+        this.ran_second_test = true
       }
 
       "unrelated method"() {
-        this.ranUnrelatedMethod = true
+        this.ran_unrelated_method = true
       }
     }
 
@@ -47,9 +47,9 @@ export class TestCaseTest extends TestCase {
 
     await test.run()
 
-    this.assert(test.ranFirstTest)
-    this.assert(test.ranSecondTest)
-    this.assert_not(test.ranUnrelatedMethod)
+    this.assert(test.ran_first_test)
+    this.assert(test.ran_second_test)
+    this.assert_not(test.ran_unrelated_method)
   }
 
   async "test runs async test methods"() {
@@ -57,7 +57,7 @@ export class TestCaseTest extends TestCase {
       async "test asynchronous"() {
         await Promise.resolve()
 
-        this.ranAsyncTest = true
+        this.ran_async_test = true
       }
     }
 
@@ -67,7 +67,7 @@ export class TestCaseTest extends TestCase {
 
     await test.run()
 
-    this.assert(test.ranAsyncTest)
+    this.assert(test.ran_async_test)
   }
 
   async "test posts lifecycle events"() {
@@ -85,13 +85,13 @@ export class TestCaseTest extends TestCase {
   async "test runs lifecycle metohds around each scenario"() {
     class WithLifecycles extends TestCase {
       setup() {
-        this.setupRanTimes = this.setupRanTimes || 0
-        this.setupRanTimes++
+        this.setup_ran_times = this.setup_ran_times || 0
+        this.setup_ran_times++
       }
 
       teardown() {
-        this.teardownRanTimes = this.teardownRanTimes || 0
-        this.teardownRanTimes++
+        this.teardown_ran_times = this.teardown_ran_times || 0
+        this.teardown_ran_times++
       }
 
       "test first"() {}
@@ -105,20 +105,20 @@ export class TestCaseTest extends TestCase {
 
     await test.run()
 
-    this.assert_equal(2, test.setupRanTimes)
-    this.assert_equal(2, test.teardownRanTimes)
+    this.assert_equal(2, test.setup_ran_times)
+    this.assert_equal(2, test.teardown_ran_times)
   }
 
   async "test runs async lifecycle methods"() {
     class WithLifecycles extends TestCase {
       async setup() {
         await Promise.resolve()
-        this.setupRan = true
+        this.setup_ran = true
       }
 
       async teardown() {
         await Promise.resolve()
-        this.teardownRan = true
+        this.teardown_ran = true
       }
 
       "test method"() {}
@@ -130,8 +130,8 @@ export class TestCaseTest extends TestCase {
 
     await test.run()
 
-    this.assert(test.setupRan)
-    this.assert(test.teardownRan)
+    this.assert(test.setup_ran)
+    this.assert(test.teardown_ran)
   }
 
   async "test passed"() {
@@ -139,14 +139,14 @@ export class TestCaseTest extends TestCase {
     bus.stubs.method("post")
     let passing = new PassingTest(bus)
     let failing = new FailingTest(bus)
-    let partiallyPassing = new PartiallyPassingTest(bus)
+    let partially_passing = new PartiallyPassingTest(bus)
     await passing.run()
     await failing.run()
-    await partiallyPassing.run()
+    await partially_passing .run()
 
     this.assert(passing.passed)
     this.assert_not(failing.passed)
-    this.assert_not(partiallyPassing.passed)
+    this.assert_not(partially_passing.passed)
   }
 
   async "test failed"() {
@@ -154,14 +154,14 @@ export class TestCaseTest extends TestCase {
     bus.stubs.method("post")
     let passing = new PassingTest(bus)
     let failing = new FailingTest(bus)
-    let partiallyPassing = new PartiallyPassingTest(bus)
+    let partially_passing = new PartiallyPassingTest(bus)
     await passing.run()
     await failing.run()
-    await partiallyPassing.run()
+    await partially_passing.run()
 
     this.assert(passing.passed)
     this.assert_not(failing.passed)
-    this.assert_not(partiallyPassing.passed)
+    this.assert_not(partially_passing.passed)
   }
 
   async "test failures"() {
@@ -169,15 +169,15 @@ export class TestCaseTest extends TestCase {
     bus.stubs.method("post")
     let passing = new PassingTest(bus)
     let failing = new FailingTest(bus)
-    let partiallyPassing = new PartiallyPassingTest(bus)
+    let partially_passing = new PartiallyPassingTest(bus)
 
     await passing.run()
     await failing.run()
-    await partiallyPassing.run()
+    await partially_passing.run()
 
     this.assert_equal(0, passing.failures.length)
     this.assert_equal(1, failing.failures.length)
-    this.assert_equal(1, partiallyPassing.failures.length)
+    this.assert_equal(1, partially_passing.failures.length)
   }
 
   "test name"() {
@@ -203,14 +203,14 @@ export class TestCaseTest extends TestCase {
 
     let bus = stub("bus")
     bus.stubs.method("post")
-    let passingTest = new AssertsTrue(bus)
-    let failingTest = new AssertsFalse(bus)
+    let passing_test = new AssertsTrue(bus)
+    let failing_test = new AssertsFalse(bus)
 
-    await passingTest.run()
-    await failingTest.run()
+    await passing_test.run()
+    await failing_test.run()
 
-    this.assert(passingTest.passed)
-    this.assert(failingTest.failed)
+    this.assert(passing_test.passed)
+    this.assert(failing_test.failed)
   }
 
   async "test assert_not"() {
@@ -227,14 +227,14 @@ export class TestCaseTest extends TestCase {
 
     let bus = stub("bus")
     bus.stubs.method("post")
-    let passingTest = new AssertsNotFalse(bus)
-    let failingTest = new AssertsNotTrue(bus)
+    let passing_test = new AssertsNotFalse(bus)
+    let failing_test = new AssertsNotTrue(bus)
 
-    await passingTest.run()
-    await failingTest.run()
+    await passing_test.run()
+    await failing_test.run()
 
-    this.assert(passingTest.passed)
-    this.assert(failingTest.failed)
+    this.assert(passing_test.passed)
+    this.assert(failing_test.failed)
   }
 
   async "test assert_equal"() {
@@ -250,14 +250,14 @@ export class TestCaseTest extends TestCase {
     }
     let bus = stub("bus")
     bus.stubs.method("post")
-    let passingTest = new AssertsEqualAreEqual(bus)
-    let failingTest = new AssertsUnequalAreEqual(bus)
+    let passing_test = new AssertsEqualAreEqual(bus)
+    let failing_test = new AssertsUnequalAreEqual(bus)
 
-    await passingTest.run()
-    await failingTest.run()
+    await passing_test.run()
+    await failing_test.run()
 
-    this.assert(passingTest.passed)
-    this.assert(failingTest.failed)
+    this.assert(passing_test.passed)
+    this.assert(failing_test.failed)
   }
 
   async "test assert_not_equal"() {
@@ -274,14 +274,14 @@ export class TestCaseTest extends TestCase {
 
     let bus = stub("bus")
     bus.stubs.method("post")
-    let passingTest = new AssertsUnequalAreNotEqual(bus)
-    let failingTest = new AssertsEqualAreNotEqual(bus)
+    let passing_test = new AssertsUnequalAreNotEqual(bus)
+    let failing_test = new AssertsEqualAreNotEqual(bus)
 
-    await passingTest.run()
-    await failingTest.run()
+    await passing_test.run()
+    await failing_test.run()
 
-    this.assert(passingTest.passed)
-    this.assert(failingTest.failed)
+    this.assert(passing_test.passed)
+    this.assert(failing_test.failed)
   }
 
   async "test assert_throws"() {
@@ -300,14 +300,14 @@ export class TestCaseTest extends TestCase {
 
     let bus = stub("bus")
     bus.stubs.method("post")
-    let passingTest = new AssertsThrowsThrows(bus)
-    let failingTest = new AssertsDoesntThrowThrows(bus)
+    let passing_test = new AssertsThrowsThrows(bus)
+    let failing_test = new AssertsDoesntThrowThrows(bus)
 
-    await passingTest.run()
-    await failingTest.run()
+    await passing_test.run()
+    await failing_test.run()
 
-    this.assert(passingTest.passed)
-    this.assert(failingTest.failed)
+    this.assert(passing_test.passed)
+    this.assert(failing_test.failed)
   }
 
   async "test assert_not_throws"() {
@@ -326,13 +326,13 @@ export class TestCaseTest extends TestCase {
 
     let bus = stub("bus")
     bus.stubs.method("post")
-    let passingTest = new AssertsDoesntThrowDoesntThrow(bus)
-    let failingTest = new AssertsThrowsDoesntThrow(bus)
+    let passing_test = new AssertsDoesntThrowDoesntThrow(bus)
+    let failing_test = new AssertsThrowsDoesntThrow(bus)
 
-    await passingTest.run()
-    await failingTest.run()
+    await passing_test.run()
+    await failing_test.run()
 
-    this.assert(passingTest.passed)
-    this.assert(failingTest.failed)
+    this.assert(passing_test.passed)
+    this.assert(failing_test.failed)
   }
 }

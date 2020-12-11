@@ -3,13 +3,13 @@ import { BrowserTestCase } from "../lib/browser_test_case"
 
 export class BrowserTestCaseTest extends TestCase {
   async "test globally sets up a fake DOM"() {
-    let globalWindow
-    let globalDocument
+    let global_window
+    let global_document
 
     class ExampleBrowserTestCase extends BrowserTestCase {
       "test method"() {
-        globalWindow = window
-        globalDocument = document
+        global_window = window
+        global_document = document
       }
     }
 
@@ -19,8 +19,8 @@ export class BrowserTestCaseTest extends TestCase {
 
     await test.run()
 
-    this.assert_not_equal(undefined, globalWindow)
-    this.assert_not_equal(undefined, globalDocument)
+    this.assert_not_equal(undefined, global_window)
+    this.assert_not_equal(undefined, global_document)
   }
 
   async "test uses the html property to create the DOM"() {

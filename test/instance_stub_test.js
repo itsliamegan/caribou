@@ -1,4 +1,4 @@
-import { TestCase } from "../lib"
+import { TestCase } from ".."
 import { InstanceStub } from "../lib/instance_stub"
 
 export class InstanceStubTest extends TestCase {

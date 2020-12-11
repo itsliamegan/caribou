@@ -1,4 +1,4 @@
-import { TestCase } from "../lib"
+import { TestCase } from ".."
 import { InstanceMock } from "../lib/instance_mock"
 import { AssertionError } from "../lib/errors/assertion_error"
 
@@ -34,55 +34,55 @@ export class InstanceMockTest extends TestCase {
   }
 
   "test verifies that a method was called with any args by default"() {
-    let calledWithNoArgs = new InstanceMock("calledWithNoArgs")
-    let calledWithSomeArgs = new InstanceMock("calledWithSomeArgs")
+    let called_with_no_args = new InstanceMock("called_with_no_args")
+    let called_with_some_args = new InstanceMock("called_with_some_args")
 
-    calledWithNoArgs.expects("method")
-    calledWithSomeArgs.expects("method")
-    calledWithNoArgs.method()
-    calledWithSomeArgs.method("arg", "arg")
+    called_with_no_args.expects("method")
+    called_with_some_args.expects("method")
+    called_with_no_args.method()
+    called_with_some_args.method("arg", "arg")
 
-    this.assert(calledWithNoArgs.satisfied)
-    this.assert(calledWithSomeArgs.satisfied)
-    this.assert_not(calledWithNoArgs.receivedUnexpectedInvocation)
-    this.assert_not(calledWithSomeArgs.receivedUnexpectedInvocation)
+    this.assert(called_with_no_args.satisfied)
+    this.assert(called_with_some_args.satisfied)
+    this.assert_not(called_with_no_args.received_unexpected_invocation)
+    this.assert_not(called_with_some_args.received_unexpected_invocation)
   }
 
   "test verifies that a method was called with specific args"() {
-    let calledWithNoArgs = new InstanceMock("calledWithNoArgs")
-    let calledWithIncorrectArgs = new InstanceMock("calledWithIncorrectArgs")
-    let calledWithCorrectArgs = new InstanceMock("calledWithCorrectArgs")
+    let called_with_no_args = new InstanceMock("called_with_no_args")
+    let called_with_incorrect_args = new InstanceMock("called_with_incorrect_args")
+    let called_with_correct_args = new InstanceMock("called_with_correct_args")
 
-    calledWithNoArgs.expects("method").with("arg1", "arg2")
-    calledWithIncorrectArgs.expects("method").with("arg1", "arg2")
-    calledWithCorrectArgs.expects("method").with("arg1", "arg2")
-    calledWithNoArgs.method()
-    calledWithIncorrectArgs.method("arg")
-    calledWithCorrectArgs.method("arg1", "arg2")
+    called_with_no_args.expects("method").with("arg1", "arg2")
+    called_with_incorrect_args.expects("method").with("arg1", "arg2")
+    called_with_correct_args.expects("method").with("arg1", "arg2")
+    called_with_no_args.method()
+    called_with_incorrect_args.method("arg")
+    called_with_correct_args.method("arg1", "arg2")
 
-    this.assert(calledWithNoArgs.unsatisfied)
-    this.assert(calledWithIncorrectArgs.unsatisfied)
-    this.assert(calledWithCorrectArgs.satisfied)
+    this.assert(called_with_no_args.unsatisfied)
+    this.assert(called_with_incorrect_args.unsatisfied)
+    this.assert(called_with_correct_args.satisfied)
   }
 
   "test verifies that a method was called multiple times with different args"() {
-    let notCalled = new InstanceMock("notCalled")
-    let calledOnce = new InstanceMock("calledOnce")
-    let calledTwice = new InstanceMock("calledTwice")
+    let not_called = new InstanceMock("not_called")
+    let called_once = new InstanceMock("called_once")
+    let called_twice = new InstanceMock("called_twice")
 
-    notCalled.expects("method").with("arg1")
-    notCalled.expects("method").with("arg2")
-    calledOnce.expects("method").with("arg1")
-    calledOnce.expects("method").with("arg2")
-    calledTwice.expects("method").with("arg1")
-    calledTwice.expects("method").with("arg2")
-    calledOnce.method("arg1")
-    calledTwice.method("arg1")
-    calledTwice.method("arg2")
+    not_called.expects("method").with("arg1")
+    not_called.expects("method").with("arg2")
+    called_once.expects("method").with("arg1")
+    called_once.expects("method").with("arg2")
+    called_twice.expects("method").with("arg1")
+    called_twice.expects("method").with("arg2")
+    called_once.method("arg1")
+    called_twice.method("arg1")
+    called_twice.method("arg2")
 
-    this.assert(notCalled.unsatisfied)
-    this.assert(calledOnce.unsatisfied)
-    this.assert(calledTwice.satisfied)
+    this.assert(not_called.unsatisfied)
+    this.assert(called_once.unsatisfied)
+    this.assert(called_twice.satisfied)
   }
 
   "test verifies that a method was only called with the correct args"() {

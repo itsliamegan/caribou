@@ -7,12 +7,12 @@ export class GlobTest extends TestCase {
     let glob = new Glob(__dirname, "example/**/file*")
 
     let files = await glob.filenames()
-    let expectedFiles = [
+    let expected_files = [
       path.resolve(__dirname, "example/file1"),
       path.resolve(__dirname, "example/file2"),
       path.resolve(__dirname, "example/subdirectory/file1"),
     ]
 
-    this.assert_equal(expectedFiles, files)
+    this.assert_equal(expected_files, files)
   }
 }

@@ -10,7 +10,7 @@ export class InvocationTest extends TestCase {
     this.assert(invocation.matches(receiver, "method"))
     this.assert(invocation.matches(receiver))
     this.assert_not(invocation.matches({}, "method", ["arg"]))
-    this.assert_not(invocation.matches(receiver, "otherMethod", ["arg"]))
+    this.assert_not(invocation.matches(receiver, "other_method", ["arg"]))
     this.assert_not(invocation.matches(receiver, "method", []))
   }
 

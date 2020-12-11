@@ -11,8 +11,8 @@ export class InstantiatorTest extends TestCase {
     let instantiator = new Instantiator(bus, classes)
 
     let suite = instantiator.suite
-    let expectedTests = [new FirstTest(bus), new SecondTest(bus)]
+    let expected_tests = [new FirstTest(bus), new SecondTest(bus)]
 
-    this.assert_equal(expectedTests, suite.tests)
+    this.assert_equal(expected_tests, suite.tests)
   }
 }
