@@ -62,12 +62,12 @@ export class ReporterTest extends TestCase {
     failed.stubs.property("passed").value(false)
     failed.stubs.property("failed").value(true)
     failed.stubs.property("failures").value([failure])
-    let passedEvent = new TestCaseFinished({ test: passed })
-    let failedEvent = new TestCaseFinished({ test: failed })
+    let passed_event = new TestCaseFinished({ test: passed })
+    let failed_event = new TestCaseFinished({ test: failed })
 
     reporter.listen()
-    reporter.received(passedEvent)
-    reporter.received(failedEvent)
+    reporter.received(passed_event)
+    reporter.received(failed_event)
 
     sink.verify()
   }

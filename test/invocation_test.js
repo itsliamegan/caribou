@@ -17,10 +17,10 @@ export class InvocationTest extends TestCase {
   "test toString"() {
     let receiver = stub("receiver")
     receiver.stubs.method("toString").returns("receiver")
-    let withoutArgs = new Invocation(receiver, "method", [])
-    let withArgs = new Invocation(receiver, "method", ["arg"])
+    let without_args = new Invocation(receiver, "method", [])
+    let with_args = new Invocation(receiver, "method", ["arg"])
 
-    this.assert_equal("receiver.method()", withoutArgs.toString())
-    this.assert_equal('receiver.method("arg")', withArgs.toString())
+    this.assert_equal("receiver.method()", without_args.toString())
+    this.assert_equal('receiver.method("arg")', with_args.toString())
   }
 }

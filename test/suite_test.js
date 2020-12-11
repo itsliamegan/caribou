@@ -18,16 +18,16 @@ export class SuiteTest extends TestCase {
   }
 
   async "test runs async tests"() {
-    let asyncTest = mock("asyncTest")
-    asyncTest.expects("run").returns(Promise.resolve())
+    let async_test = mock("async_test")
+    async_test.expects("run").returns(Promise.resolve())
     let bus = stub("bus")
     bus.stubs.method("post")
     let suite = new Suite(bus)
 
-    suite.register(asyncTest)
+    suite.register(async_test)
     await suite.run()
 
-    asyncTest.verify()
+    async_test.verify()
   }
 
   async "test posts lifecycle events"() {
