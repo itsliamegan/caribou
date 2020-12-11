@@ -17,7 +17,7 @@ export class StdoutSinkTest extends TestCase {
   "test write with a foreground color"() {
     let color = Color.red
     let stdout = mock("stdout")
-    stdout.expects("write").with(`${ANSI.foregroundFor(color)}message${ANSI.reset}`)
+    stdout.expects("write").with(`${ANSI.foreground_for(color)}message${ANSI.reset}`)
     let sink = new StdoutSink(stdout)
 
     sink.write("message", { foreground: color })
@@ -28,7 +28,7 @@ export class StdoutSinkTest extends TestCase {
   "test write with a background color"() {
     let color = Color.red
     let stdout = mock("stdout")
-    stdout.expects("write").with(`${ANSI.backgroundFor(color)}message${ANSI.reset}`)
+    stdout.expects("write").with(`${ANSI.background_for(color)}message${ANSI.reset}`)
     let sink = new StdoutSink(stdout)
 
     sink.write("message", { background: color })
@@ -43,7 +43,7 @@ export class StdoutSinkTest extends TestCase {
     stdout
       .expects("write")
       .with(
-        `${ANSI.backgroundFor(background)}${ANSI.foregroundFor(foreground)}message${ANSI.reset}`
+        `${ANSI.background_for(background)}${ANSI.foreground_for(foreground)}message${ANSI.reset}`
       )
     let sink = new StdoutSink(stdout)
 

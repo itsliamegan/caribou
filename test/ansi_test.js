@@ -3,15 +3,15 @@ import { ANSI } from "../lib/ansi"
 import { Color } from "../lib/color"
 
 export class ANSITest extends TestCase {
-  "test foregroundFor"() {
-    this.assertEqual(ANSI.foreground.white, ANSI.foregroundFor(Color.white))
-    this.assertEqual(ANSI.foreground.red, ANSI.foregroundFor(Color.red))
-    this.assertEqual(ANSI.foreground.green, ANSI.foregroundFor(Color.green))
+  "test foreground_for"() {
+    this.assertEqual(ANSI.foreground.white, ANSI.foreground_for(Color.white))
+    this.assertEqual(ANSI.foreground.red, ANSI.foreground_for(Color.red))
+    this.assertEqual(ANSI.foreground.green, ANSI.foreground_for(Color.green))
   }
 
-  "test backgroundFor"() {
-    this.assertEqual(ANSI.background.white, ANSI.backgroundFor(Color.white))
-    this.assertEqual(ANSI.background.red, ANSI.backgroundFor(Color.red))
-    this.assertEqual(ANSI.background.green, ANSI.backgroundFor(Color.green))
+  "test background_for"() {
+    this.assertEqual(ANSI.background.white, ANSI.background_for(Color.white))
+    this.assertEqual(ANSI.background.red, ANSI.background_for(Color.red))
+    this.assertEqual(ANSI.background.green, ANSI.background_for(Color.green))
   }
 }

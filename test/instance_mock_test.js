@@ -92,7 +92,7 @@ export class InstanceMockTest extends TestCase {
     mock.method("arg")
     mock.method()
 
-    this.assert(mock.receivedUnexpectedInvocation)
+    this.assert(mock.received_unexpected_invocation)
   }
 
   "test throws an error when verified if it's unsatisfied"() {
