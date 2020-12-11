@@ -3,11 +3,11 @@ import { literal_print } from "../../lib/support/literal_print"
 
 export class LiteralPrintTest extends TestCase {
   "test literal_print"() {
-    this.assertEqual('"string"', literal_print("string"))
-    this.assertEqual("1", literal_print(1))
-    this.assertEqual("true", literal_print(true))
-    this.assertEqual("null", literal_print(null))
-    this.assertEqual("undefined", literal_print(undefined))
-    this.assertEqual('[1, true, "three"]', literal_print([1, true, "three"]))
+    this.assert_equal('"string"', literal_print("string"))
+    this.assert_equal("1", literal_print(1))
+    this.assert_equal("true", literal_print(true))
+    this.assert_equal("null", literal_print(null))
+    this.assert_equal("undefined", literal_print(undefined))
+    this.assert_equal('[1, true, "three"]', literal_print([1, true, "three"]))
   }
 }

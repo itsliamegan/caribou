@@ -6,6 +6,6 @@ export class EventTest extends TestCase {
     class ExampleEvent extends Event {}
     let event = new ExampleEvent()
 
-    this.assertEqual(ExampleEvent, event.type)
+    this.assert_equal(ExampleEvent, event.type)
   }
 }

@@ -8,7 +8,7 @@ export class InstanceMockTest extends TestCase {
 
     mock.expects("method").returns("value")
 
-    this.assertEqual("value", mock.method())
+    this.assert_equal("value", mock.method())
   }
 
   "test expecting a method multiple times uses the last return value"() {
@@ -18,7 +18,7 @@ export class InstanceMockTest extends TestCase {
     mock.expects("method").returns("second")
     mock.expects("method").returns("third")
 
-    this.assertEqual("third", mock.method())
+    this.assert_equal("third", mock.method())
   }
 
   "test verifies that a method was called"() {
@@ -44,8 +44,8 @@ export class InstanceMockTest extends TestCase {
 
     this.assert(calledWithNoArgs.satisfied)
     this.assert(calledWithSomeArgs.satisfied)
-    this.assertNot(calledWithNoArgs.receivedUnexpectedInvocation)
-    this.assertNot(calledWithSomeArgs.receivedUnexpectedInvocation)
+    this.assert_not(calledWithNoArgs.receivedUnexpectedInvocation)
+    this.assert_not(calledWithSomeArgs.receivedUnexpectedInvocation)
   }
 
   "test verifies that a method was called with specific args"() {
@@ -103,7 +103,7 @@ export class InstanceMockTest extends TestCase {
     unsatisfied.expects("method")
     satisfied.method()
 
-    this.assertNotThrows(() => satisfied.verify())
-    this.assertThrows(() => unsatisfied.verify(), AssertionError)
+    this.assert_not_throws(() => satisfied.verify())
+    this.assert_throws(() => unsatisfied.verify(), AssertionError)
   }
 }

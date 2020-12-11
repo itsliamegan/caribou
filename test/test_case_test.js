@@ -49,7 +49,7 @@ export class TestCaseTest extends TestCase {
 
     this.assert(test.ranFirstTest)
     this.assert(test.ranSecondTest)
-    this.assertNot(test.ranUnrelatedMethod)
+    this.assert_not(test.ranUnrelatedMethod)
   }
 
   async "test runs async test methods"() {
@@ -105,8 +105,8 @@ export class TestCaseTest extends TestCase {
 
     await test.run()
 
-    this.assertEqual(2, test.setupRanTimes)
-    this.assertEqual(2, test.teardownRanTimes)
+    this.assert_equal(2, test.setupRanTimes)
+    this.assert_equal(2, test.teardownRanTimes)
   }
 
   async "test runs async lifecycle methods"() {
@@ -145,8 +145,8 @@ export class TestCaseTest extends TestCase {
     await partiallyPassing.run()
 
     this.assert(passing.passed)
-    this.assertNot(failing.passed)
-    this.assertNot(partiallyPassing.passed)
+    this.assert_not(failing.passed)
+    this.assert_not(partiallyPassing.passed)
   }
 
   async "test failed"() {
@@ -160,8 +160,8 @@ export class TestCaseTest extends TestCase {
     await partiallyPassing.run()
 
     this.assert(passing.passed)
-    this.assertNot(failing.passed)
-    this.assertNot(partiallyPassing.passed)
+    this.assert_not(failing.passed)
+    this.assert_not(partiallyPassing.passed)
   }
 
   async "test failures"() {
@@ -175,9 +175,9 @@ export class TestCaseTest extends TestCase {
     await failing.run()
     await partiallyPassing.run()
 
-    this.assertEqual(0, passing.failures.length)
-    this.assertEqual(1, failing.failures.length)
-    this.assertEqual(1, partiallyPassing.failures.length)
+    this.assert_equal(0, passing.failures.length)
+    this.assert_equal(1, failing.failures.length)
+    this.assert_equal(1, partiallyPassing.failures.length)
   }
 
   "test name"() {
@@ -185,7 +185,7 @@ export class TestCaseTest extends TestCase {
 
     let test = new ExampleTest()
 
-    this.assertEqual("ExampleTest", test.name)
+    this.assert_equal("ExampleTest", test.name)
   }
 
   async "test assert"() {
@@ -213,15 +213,15 @@ export class TestCaseTest extends TestCase {
     this.assert(failingTest.failed)
   }
 
-  async "test assertNot"() {
+  async "test assert_not"() {
     class AssertsNotFalse extends TestCase {
       "test assert"() {
-        this.assertNot(false)
+        this.assert_not(false)
       }
     }
     class AssertsNotTrue extends TestCase {
       "test assert"() {
-        this.assertNot(true)
+        this.assert_not(true)
       }
     }
 
@@ -237,15 +237,15 @@ export class TestCaseTest extends TestCase {
     this.assert(failingTest.failed)
   }
 
-  async "test assertEqual"() {
+  async "test assert_equal"() {
     class AssertsEqualAreEqual extends TestCase {
       "test assert"() {
-        this.assertEqual("value", "value")
+        this.assert_equal("value", "value")
       }
     }
     class AssertsUnequalAreEqual extends TestCase {
       "test assert"() {
-        this.assertEqual("value", "other value")
+        this.assert_equal("value", "other value")
       }
     }
     let bus = stub("bus")
@@ -260,15 +260,15 @@ export class TestCaseTest extends TestCase {
     this.assert(failingTest.failed)
   }
 
-  async "test assertNotEqual"() {
+  async "test assert_not_equal"() {
     class AssertsUnequalAreNotEqual extends TestCase {
       "test assert"() {
-        this.assertNotEqual("value", "other value")
+        this.assert_not_equal("value", "other value")
       }
     }
     class AssertsEqualAreNotEqual extends TestCase {
       "test assert"() {
-        this.assertNotEqual("value", "value")
+        this.assert_not_equal("value", "value")
       }
     }
 
@@ -284,17 +284,17 @@ export class TestCaseTest extends TestCase {
     this.assert(failingTest.failed)
   }
 
-  async "test assertThrows"() {
+  async "test assert_throws"() {
     class AssertsThrowsThrows extends TestCase {
       "test assert"() {
-        this.assertThrows(() => {
+        this.assert_throws(() => {
           throw new Error()
         }, Error)
       }
     }
     class AssertsDoesntThrowThrows extends TestCase {
       "test assert"() {
-        this.assertThrows(() => {}, Error)
+        this.assert_throws(() => {}, Error)
       }
     }
 
@@ -310,15 +310,15 @@ export class TestCaseTest extends TestCase {
     this.assert(failingTest.failed)
   }
 
-  async "test assertNotThrows"() {
+  async "test assert_not_throws"() {
     class AssertsDoesntThrowDoesntThrow extends TestCase {
       "test assert"() {
-        this.assertNotThrows(() => {}, Error)
+        this.assert_not_throws(() => {}, Error)
       }
     }
     class AssertsThrowsDoesntThrow extends TestCase {
       "test assert"() {
-        this.assertNotThrows(() => {
+        this.assert_not_throws(() => {
           throw new Error()
         })
       }

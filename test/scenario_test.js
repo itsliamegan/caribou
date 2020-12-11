@@ -7,6 +7,6 @@ export class ScenarioTest extends TestCase {
     test.stubs.method("test method")
     let scenario = new Scenario(test, test["test method"])
 
-    this.assertEqual("method", scenario.name)
+    this.assert_equal("method", scenario.name)
   }
 }

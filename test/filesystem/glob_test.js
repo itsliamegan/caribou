@@ -13,6 +13,6 @@ export class GlobTest extends TestCase {
       path.resolve(__dirname, "example/subdirectory/file1"),
     ]
 
-    this.assertEqual(expectedFiles, files)
+    this.assert_equal(expectedFiles, files)
   }
 }

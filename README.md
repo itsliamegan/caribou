@@ -55,7 +55,7 @@ export class ArrayTest extends TestCase {
     array.push("item")
     let item = array.pop()
 
-    this.assertEqual("item", item)
+    this.assert_equal("item", item)
   }
 }
 ```
@@ -91,21 +91,21 @@ you feel any are missing, feel free to [contribute them](#contributing). Below
 are a list of all the assertions.
 
 * `assert(condition, [message])` Asserts that the given condition is truthy
-* `assertNot(condition)` Asserts that the given condition is falsey
-* `assertEqual(expected, actual)` Asserts that the expected is **deep equal** to
+* `assert_not(condition)` Asserts that the given condition is falsey
+* `assert_equal(expected, actual)` Asserts that the expected is **deep equal** to
   the actual
-* `assertNotEqual(expected, actual)` Asserts that the expected is not
+* `assert_not_equal(expected, actual)` Asserts that the expected is not
   **deep equal** to the actual
-* `assertThrows(fn, errorType)` Asserts that the given function, when called,
+* `assert_throws(fn, errorType)` Asserts that the given function, when called,
   throws an instance of the given error type
-* `assertNotThrows(fn)` Asserts that the given function, when called, doesn't
+* `assert_not_throws(fn)` Asserts that the given function, when called, doesn't
   throw any errors
 
 ### Custom Assertions
 
 If you need to have a custom assertion, possibly for a domain-specific
 exception, feel free to define your own. Most of the time, you can define them
-in terms of the basic `assert` or `assertNot`. If you can't (for example, an
+in terms of the basic `assert` or `assert_not`. If you can't (for example, an
 assertion that isn't in terms of a basic boolean expression), do nothing in a
 passing case, and throw an `AssertionError` in a failing case.
 
@@ -263,7 +263,7 @@ export class TodoListTest extends BrowserTestCase {
     newField.value = "New Todo"
     addButton.click()
 
-    this.assertEqual(1, list.children.length)
+    this.assert_equal(1, list.children.length)
   }
 }
 ```

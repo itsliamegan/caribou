@@ -9,7 +9,7 @@ export class ProgramTest extends TestCase {
     let stdout = stub("stdout")
     let program = new Program(cwd, argv, stdin, stdout)
 
-    this.assertEqual(["third"], program.arguments)
+    this.assert_equal(["third"], program.arguments)
   }
 
   "test arguments when there are no additional arguments"() {
@@ -19,6 +19,6 @@ export class ProgramTest extends TestCase {
     let stdout = stub("stdin")
     let program = new Program(cwd, argv, stdin, stdout)
 
-    this.assertEqual([], program.arguments)
+    this.assert_equal([], program.arguments)
   }
 }

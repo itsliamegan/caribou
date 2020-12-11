@@ -48,8 +48,8 @@ export class SuiteTest extends TestCase {
 
     await suite.run()
 
-    this.assertEqual("number", typeof suite.time)
-    this.assertNotEqual(NaN, suite.time)
+    this.assert_equal("number", typeof suite.time)
+    this.assert_not_equal(NaN, suite.time)
   }
 
   async "test passed"() {
@@ -76,8 +76,8 @@ export class SuiteTest extends TestCase {
     await partiallyPassing.run()
 
     this.assert(passing.passed)
-    this.assertNot(failing.passed)
-    this.assertNot(partiallyPassing.passed)
+    this.assert_not(failing.passed)
+    this.assert_not(partiallyPassing.passed)
   }
 
   async "test failed"() {
@@ -103,7 +103,7 @@ export class SuiteTest extends TestCase {
     await failing.run()
     await partiallyPassing.run()
 
-    this.assertNot(passing.failed)
+    this.assert_not(passing.failed)
     this.assert(failing.failed)
     this.assert(partiallyPassing.failed)
   }

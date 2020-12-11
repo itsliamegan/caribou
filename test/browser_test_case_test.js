@@ -19,8 +19,8 @@ export class BrowserTestCaseTest extends TestCase {
 
     await test.run()
 
-    this.assertNotEqual(undefined, globalWindow)
-    this.assertNotEqual(undefined, globalDocument)
+    this.assert_not_equal(undefined, globalWindow)
+    this.assert_not_equal(undefined, globalDocument)
   }
 
   async "test uses the html property to create the DOM"() {
@@ -48,7 +48,7 @@ export class BrowserTestCaseTest extends TestCase {
 
     await test.run()
 
-    this.assertEqual(3, paragraphs.length)
+    this.assert_equal(3, paragraphs.length)
   }
 
   async "test queries for a single element"() {
@@ -73,6 +73,6 @@ export class BrowserTestCaseTest extends TestCase {
 
     await test.run()
 
-    this.assertEqual("element", element.id)
+    this.assert_equal("element", element.id)
   }
 }

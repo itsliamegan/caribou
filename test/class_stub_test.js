@@ -8,7 +8,7 @@ export class ClassStubTest extends TestCase {
 
     stub.stubs.property("property").value("value")
 
-    this.assertEqual("value", ExampleClass.property)
+    this.assert_equal("value", ExampleClass.property)
   }
 
   "test stubbing methods"() {
@@ -17,7 +17,7 @@ export class ClassStubTest extends TestCase {
 
     stub.stubs.method("method").returns("value")
 
-    this.assertEqual("value", ExampleClass.method())
+    this.assert_equal("value", ExampleClass.method())
   }
 
   "test resetting stubbed methods"() {
@@ -29,6 +29,6 @@ export class ClassStubTest extends TestCase {
     stub.stubs.method("method").returns("stubbed")
     stub.reset()
 
-    this.assertEqual("original", ExampleClass.method())
+    this.assert_equal("original", ExampleClass.method())
   }
 }

@@ -9,9 +9,9 @@ export class InvocationTest extends TestCase {
     this.assert(invocation.matches(receiver, "method", ["arg"]))
     this.assert(invocation.matches(receiver, "method"))
     this.assert(invocation.matches(receiver))
-    this.assertNot(invocation.matches({}, "method", ["arg"]))
-    this.assertNot(invocation.matches(receiver, "otherMethod", ["arg"]))
-    this.assertNot(invocation.matches(receiver, "method", []))
+    this.assert_not(invocation.matches({}, "method", ["arg"]))
+    this.assert_not(invocation.matches(receiver, "otherMethod", ["arg"]))
+    this.assert_not(invocation.matches(receiver, "method", []))
   }
 
   "test toString"() {
@@ -20,7 +20,7 @@ export class InvocationTest extends TestCase {
     let withoutArgs = new Invocation(receiver, "method", [])
     let withArgs = new Invocation(receiver, "method", ["arg"])
 
-    this.assertEqual("receiver.method()", withoutArgs.toString())
-    this.assertEqual('receiver.method("arg")', withArgs.toString())
+    this.assert_equal("receiver.method()", withoutArgs.toString())
+    this.assert_equal('receiver.method("arg")', withArgs.toString())
   }
 }

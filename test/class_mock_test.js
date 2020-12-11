@@ -8,7 +8,7 @@ export class ClassMockTest extends TestCase {
 
     mock.expects("method").returns("value")
 
-    this.assertEqual("value", ExampleClass.method())
+    this.assert_equal("value", ExampleClass.method())
   }
 
   "test resets stubbed methods when verified"() {
@@ -19,6 +19,6 @@ export class ClassMockTest extends TestCase {
     ExampleClass.method();
     mock.verify()
 
-    this.assertEqual(undefined, ExampleClass.method)
+    this.assert_equal(undefined, ExampleClass.method)
   }
 }
