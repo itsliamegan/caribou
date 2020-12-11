@@ -1,4 +1,4 @@
-import { mock, stub } from ".."
+import { mock, stub } from "../lib/doubles"
 import {
   assert,
   assert_not,

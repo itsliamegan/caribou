@@ -1,4 +1,5 @@
-import { TestCase, mock, stub } from ".."
+import { TestCase } from ".."
+import { mock } from "../lib/doubles"
 import { StdoutSink } from "../lib/stdout_sink"
 import { Color } from "../lib/color"
 import { ANSI } from "../lib/ansi"

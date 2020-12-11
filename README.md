@@ -158,7 +158,7 @@ interface.
 The basic syntax is as follows:
 
 ```js
-import { stub } from "caribou"
+import { stub } from "caribou/doubles"
 
 // Create a stub.
 let person = stub("person")
@@ -182,7 +182,7 @@ assert that properties were accessed, the `expects` method doesn't require you
 to specify `property` or `method`:
 
 ```js
-import { mock } from "caribou"
+import { mock } from "caribou/doubles"
 
 // Expect that a method is called.
 let door = mock("door")
@@ -219,7 +219,7 @@ cup.verify()
 You can also use the `stubs` method on a mock:
 
 ```js
-import { mock } from "caribou"
+import { mock } from "caribou/doubles"
 
 // Stub a property on a mock
 let train = mock("train")

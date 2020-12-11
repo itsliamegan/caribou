@@ -1,4 +1,5 @@
-import { TestCase, mock } from ".."
+import { TestCase } from ".."
+import { mock } from "../lib/doubles"
 import { EventBus } from "../lib/event_bus"
 import { Event } from "../lib/event"
 

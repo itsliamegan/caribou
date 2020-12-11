@@ -1,4 +1,5 @@
-import { TestCase, mock, stub } from ".."
+import { TestCase } from ".."
+import { mock, stub } from "../lib/doubles"
 import {
   assert,
   assert_not,

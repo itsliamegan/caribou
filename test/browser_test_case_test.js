@@ -1,4 +1,5 @@
-import { TestCase, stub } from ".."
+import { TestCase } from ".."
+import { stub } from "../lib/doubles"
 import { assert_equal, assert_not_equal } from "../lib/assertions"
 import { BrowserTestCase } from "../lib/browser_test_case"
 

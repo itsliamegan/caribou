@@ -1,4 +1,5 @@
-import { TestCase, mock, stub } from ".."
+import { TestCase } from ".."
+import { mock, stub } from "../lib/doubles"
 import { Reporter } from "../lib/reporter"
 import { SuiteStarted } from "../lib/events/suite_started"
 import { SuiteFinished } from "../lib/events/suite_finished"
