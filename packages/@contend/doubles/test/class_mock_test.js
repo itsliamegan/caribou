@@ -1,5 +1,5 @@
 import { TestCase } from "contend"
-import { assert_equal } from "contend/assertions"
+import { assert_equal, assert_undefined } from "contend/assertions"
 import { ClassMock } from "../lib/class_mock"
 
 export class ClassMockTest extends TestCase {
@@ -17,9 +17,9 @@ export class ClassMockTest extends TestCase {
     let mock = new ClassMock(ExampleClass)
 
     mock.expects("method")
-    ExampleClass.method();
+    ExampleClass.method()
     mock.verify()
 
-    assert_equal(undefined, ExampleClass.method)
+    assert_undefined(ExampleClass.method)
   }
 }

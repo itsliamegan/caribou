@@ -106,6 +106,8 @@ are a list of all the assertions, which are available to import from the
   is also an instance of the given error type
 * `assert_not_throws(fn)` Asserts that the given function, when called, doesn't
   throw any errors
+* `assert_undefined(value)` Asserts that the given value is strictly undefined,
+  not any other falsey value
 
 ### Custom Assertions
 

@@ -1,4 +1,4 @@
-import { assert, assert_not, assert_equal } from "contend/assertions"
+import { assert, assert_not, assert_equal, assert_undefined } from "contend/assertions"
 import { mock, stub } from "contend/doubles"
 import { TestCase } from "../lib/test_case"
 import { TestCaseStarted } from "../lib/events/test_case_started"
@@ -167,7 +167,7 @@ export class TestCaseTest extends TestCase {
     let test = new SharedState(bus)
     await test.run()
 
-    assert_equal(undefined, property_before_mutation)
+    assert_undefined(property_before_mutation)
   }
 
   async "test passed"() {
