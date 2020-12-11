@@ -9,8 +9,7 @@
   "files": [
     "assertions.js",
     "doubles.js",
-    "index.js",
-    "README.md"
+    "index.js"
   ],
   "scripts": {
     "test": "contend"
