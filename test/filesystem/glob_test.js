@@ -1,6 +1,6 @@
 import path from "path"
 import { TestCase } from "../.."
-import { Glob } from "../../src/filesystem/glob"
+import { Glob } from "../../lib/filesystem/glob"
 
 export class GlobTest extends TestCase {
   async "test filenames"() {

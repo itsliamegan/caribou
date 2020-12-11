@@ -1,5 +1,5 @@
 import { TestCase, stub } from ".."
-import { Invocation } from "../src/invocation"
+import { Invocation } from "../lib/invocation"
 
 export class InvocationTest extends TestCase {
   "test matches"() {

@@ -1,5 +1,5 @@
 import { TestCase } from "../.."
-import { deepEqual } from "../../src/support/deep_equal"
+import { deepEqual } from "../../lib/support/deep_equal"
 
 export class DeepEqualTest extends TestCase {
   "test deepEqual primitives of the same"() {

@@ -1,10 +1,10 @@
 import { TestCase, mock, stub } from ".."
-import { Reporter } from "../src/reporter"
-import { SuiteStarted } from "../src/events/suite_started"
-import { SuiteFinished } from "../src/events/suite_finished"
-import { TestCaseStarted } from "../src/events/test_case_started"
-import { TestCaseFinished } from "../src/events/test_case_finished"
-import { Color } from "../src/color"
+import { Reporter } from "../lib/reporter"
+import { SuiteStarted } from "../lib/events/suite_started"
+import { SuiteFinished } from "../lib/events/suite_finished"
+import { TestCaseStarted } from "../lib/events/test_case_started"
+import { TestCaseFinished } from "../lib/events/test_case_finished"
+import { Color } from "../lib/color"
 
 export class ReporterTest extends TestCase {
   "test registers lifecycle events"() {

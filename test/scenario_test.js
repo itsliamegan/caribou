@@ -1,5 +1,5 @@
 import { TestCase, stub } from ".."
-import { Scenario } from "../src/scenario"
+import { Scenario } from "../lib/scenario"
 
 export class ScenarioTest extends TestCase {
   "test name"() {

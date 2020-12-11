@@ -1,5 +1,5 @@
 import { TestCase, stub } from ".."
-import { BrowserTestCase } from "../src/browser_test_case"
+import { BrowserTestCase } from "../lib/browser_test_case"
 
 export class BrowserTestCaseTest extends TestCase {
   async "test globally sets up a fake DOM"() {

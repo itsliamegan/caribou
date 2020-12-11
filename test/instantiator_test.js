@@ -1,5 +1,5 @@
 import { TestCase, stub } from ".."
-import { Instantiator } from "../src/instantiator"
+import { Instantiator } from "../lib/instantiator"
 
 export class InstantiatorTest extends TestCase {
   "test creates a new suite with instances of all the test classes"() {

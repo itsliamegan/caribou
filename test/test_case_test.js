@@ -1,7 +1,7 @@
 import { mock, stub } from ".."
-import { TestCase } from "../src/test_case"
-import { TestCaseStarted } from "../src/events/test_case_started"
-import { TestCaseFinished } from "../src/events/test_case_finished"
+import { TestCase } from "../lib/test_case"
+import { TestCaseStarted } from "../lib/events/test_case_started"
+import { TestCaseFinished } from "../lib/events/test_case_finished"
 
 class PassingTest extends TestCase {
   "test method"() {

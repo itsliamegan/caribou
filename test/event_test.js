@@ -1,5 +1,5 @@
 import { TestCase } from ".."
-import { Event } from "../src/event"
+import { Event } from "../lib/event"
 
 export class EventTest extends TestCase {
   "test type"() {

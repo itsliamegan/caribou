@@ -1,7 +1,7 @@
 import { TestCase, mock, stub } from ".."
-import { Suite } from "../src/suite"
-import { SuiteStarted } from "../src/events/suite_started"
-import { SuiteFinished } from "../src/events/suite_finished"
+import { Suite } from "../lib/suite"
+import { SuiteStarted } from "../lib/events/suite_started"
+import { SuiteFinished } from "../lib/events/suite_finished"
 
 export class SuiteTest extends TestCase {
   async "test runs all registered tests"() {

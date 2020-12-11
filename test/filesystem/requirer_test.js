@@ -1,6 +1,6 @@
 import path from "path"
 import { TestCase } from "../.."
-import { Requirer } from "../../src/filesystem/requirer"
+import { Requirer } from "../../lib/filesystem/requirer"
 
 export class RequirerTest extends TestCase {
   "test exports"() {

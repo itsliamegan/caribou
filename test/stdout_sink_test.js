@@ -1,7 +1,7 @@
 import { TestCase, mock, stub } from ".."
-import { StdoutSink } from "../src/stdout_sink"
-import { Color } from "../src/color"
-import { ANSI } from "../src/ansi"
+import { StdoutSink } from "../lib/stdout_sink"
+import { Color } from "../lib/color"
+import { ANSI } from "../lib/ansi"
 
 export class StdoutSinkTest extends TestCase {
   "test write"() {

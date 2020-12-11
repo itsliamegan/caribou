@@ -1,5 +1,5 @@
 import { TestCase, stub } from "../.."
-import { Program } from "../../src/cli/program"
+import { Program } from "../../lib/cli/program"
 
 export class ProgramTest extends TestCase {
   "test arguments"() {

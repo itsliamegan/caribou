@@ -1,5 +1,5 @@
 import { TestCase } from "../.."
-import { literalPrint } from "../../src/support/literal_print"
+import { literalPrint } from "../../lib/support/literal_print"
 
 export class LiteralPrintTest extends TestCase {
   "test literalPrint"() {

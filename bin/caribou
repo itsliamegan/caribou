@@ -2,6 +2,6 @@
 
 require = require("esm")(module)
 
-let { Caribou } = require("../src/caribou.js")
+let { Caribou } = require("../lib/caribou.js")
 let caribou = new Caribou(process.cwd(), process.argv, process.stdin, process.stdout)
 caribou.run()

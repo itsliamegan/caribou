@@ -1,6 +1,6 @@
-import { TestCase } from "../src"
-import { InstanceMock } from "../src/instance_mock"
-import { AssertionError } from "../src/errors/assertion_error"
+import { TestCase } from "../lib"
+import { InstanceMock } from "../lib/instance_mock"
+import { AssertionError } from "../lib/errors/assertion_error"
 
 export class InstanceMockTest extends TestCase {
   "test expecting a method stubs that method"() {

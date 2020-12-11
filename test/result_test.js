@@ -1,5 +1,5 @@
 import { TestCase, stub } from ".."
-import { Result } from "../src/result"
+import { Result } from "../lib/result"
 
 export class ResultTest extends TestCase {
   "test name"() {

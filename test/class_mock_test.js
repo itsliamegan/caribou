@@ -1,5 +1,5 @@
 import { TestCase } from ".."
-import { ClassMock } from "../src/class_mock"
+import { ClassMock } from "../lib/class_mock"
 
 export class ClassMockTest extends TestCase {
   "test expecting a method stubs that method"() {

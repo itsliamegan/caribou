@@ -1,6 +1,6 @@
 import { TestCase } from ".."
-import { ANSI } from "../src/ansi"
-import { Color } from "../src/color"
+import { ANSI } from "../lib/ansi"
+import { Color } from "../lib/color"
 
 export class ANSITest extends TestCase {
   "test foregroundFor"() {

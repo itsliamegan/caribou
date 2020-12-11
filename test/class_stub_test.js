@@ -1,5 +1,5 @@
 import { TestCase } from ".."
-import { ClassStub } from "../src/class_stub"
+import { ClassStub } from "../lib/class_stub"
 
 export class ClassStubTest extends TestCase {
   "test stubbing properties"() {

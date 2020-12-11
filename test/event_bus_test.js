@@ -1,6 +1,6 @@
 import { TestCase, mock } from ".."
-import { EventBus } from "../src/event_bus"
-import { Event } from "../src/event"
+import { EventBus } from "../lib/event_bus"
+import { Event } from "../lib/event"
 
 export class EventBusTest extends TestCase {
   "test notifies listeners when events they are listening to are posted"() {
