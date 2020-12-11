@@ -10,6 +10,7 @@
   "scripts": {
     "test": "yarn workspaces run test"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
 }

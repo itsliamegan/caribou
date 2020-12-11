@@ -14,5 +14,7 @@
     "@contend/core": "^0.2.0",
     "@contend/support": "^0.2.0"
   },
-  "devDependencies": {}
+  "publishConfig": {
+    "access": "public"
+  }
 }
