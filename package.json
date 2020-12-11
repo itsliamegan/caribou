@@ -1,13 +1,11 @@
 {
-  "name": "contend",
-  "description": "An xUnit-style testing framework",
+  "name": "contend-repo",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.0.0",
   "license": "MIT",
-  "author": "Liam Egan",
-  "repository": "https://github.com/itsliamegan/contend",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/@contend/*"
   ],
   "scripts": {
     "test": "yarn workspaces run test"

@@ -8,12 +8,14 @@ lifecycle](#lifecycle-hooks), [create mocks and stubs](#mocks-and-stubs), and
 test (limited) [functionality in the browser](#browser-testing).
 
 If you're convinced, [install it](#installation) and [run some
-tests](#running-tests)!
+tests](#running-tests). Check out some [examples](#examples) of Contend test
+suites, or [contribute](#contributing).
 
-In its current form, it's better suited for testing libraries rather than
-dynamic, JavaScript-heavy applications. This is simply because there are
-currently very few utilities provided for testing these kinds of libraries,
-whereas there are plenty of utilities for testing applications.
+In its current form, Contend is better suited for testing libraries rather than
+dynamic, JavaScript-heavy applications. This is simply because, in the
+JavaScript ecosystem, there are currently very few utilities provided for
+testing these kinds of libraries, whereas there are plenty of utilities for
+testing applications.
 
 ## Installation
 
@@ -30,21 +32,22 @@ $ yarn add --dev contend
 ## Defining Tests
 
 Contend, in the style of xUnit, defines tests as classes. They should be defined
-in the "test/" folder at the root of your application. Though not required, it's
-conventional to define isolated unit tests in the "test/unit" folder, and tests
-that validate the collaboration between objects in the "test/integration"
-folder. Each file should be called "{name}_test.js", where {name} is the name of
-the class or function that you're testing. That file should export a class that
-extends one of Contend's base `TestCase` classes. This class should be named, in
-accordance with the file, {Name}Test, again where {Name} is the name of the
-class or function that you're testing. To define specific scenarios for your
-tests, create methods that start with the word "test". If you like naming your
-test methods camel/snake case, then feel free to do so. However, since methods
-are just properties on an object, and properties can be any string, we can use a
-string to define the name of a test scenario method.
+in the "test/" directory at the root of your application. Though not required,
+it's conventional to define isolated unit tests in the "test/unit" directory,
+and tests that exercise the user-facing behavior in the "test/acceptance
+directory. Each file should be called "{name}_test.js", where {name} is the name
+of the class or function that you're testing. That file should export a class
+that extends one of Contend's base `TestCase` classes. This class should be
+named, in accordance with the file, {Name}Test, again where {Name} is the name
+of the class or function that you're testing. To define specific scenarios for
+your tests, create methods that start with the word "test". If you like naming
+your test methods camel/snake case, then feel free to do so. However, since
+methods are just properties on an object, and properties can be any string, we
+can use a string to define the name of a test scenario method.
 
 Below is an example of a typical test file.
 
+`test/unit/array_test.js`:
 ```js
 import { TestCase } from "contend"
 import { assert_equal } from "contend/assertions"
@@ -53,10 +56,10 @@ export class ArrayTest extends TestCase {
   "test push and pop"() {
     let array = []
 
-    array.push("item")
-    let item = array.pop()
+    array.push("element")
+    let element = array.pop()
 
-    assert_equal("item", item)
+    assert_equal("element", element)
   }
 }
 ```
@@ -66,14 +69,14 @@ export class ArrayTest extends TestCase {
 To run all the tests in your application, run the command without any arguments:
 
 ```
-$ ./node_modules/contend/bin/contend
+$ contend
 ```
 
 To run a specific test, pass the test's filename as an argument:
 
 ```
 # Run the test "test/unit/array_test.js"
-$ ./node_modules/contend/bin/contend test/unit/array_test.js
+$ contend test/unit/array_test.js
 ```
 
 To run a group of tests, pass a
@@ -81,7 +84,7 @@ To run a group of tests, pass a
 
 ```
 # Run all the tests in the "test/unit" folder
-$ ./node_modules/contend/bin/contend test/unit/**/*_test.js
+$ contend test/unit/**/*_test.js
 ```
 
 ## Assertions
@@ -94,12 +97,13 @@ are a list of all the assertions, which are available to import from the
 
 * `assert(condition, [message])` Asserts that the given condition is truthy
 * `assert_not(condition)` Asserts that the given condition is falsey
-* `assert_equal(expected, actual)` Asserts that the expected is **deep equal** to
-  the actual
+* `assert_equal(expected, actual)` Asserts that the expected is **deep equal**
+  to the actual
 * `assert_not_equal(expected, actual)` Asserts that the expected is not
   **deep equal** to the actual
-* `assert_throws(fn, errorType)` Asserts that the given function, when called,
-  throws an instance of the given error type
+* `assert_throws(fn, [error_type])` Asserts that the given function, when
+  called, throws an error. If given an error type, asserts that the error raised
+  is also an instance of the given error type
 * `assert_not_throws(fn)` Asserts that the given function, when called, doesn't
   throw any errors
 
@@ -270,7 +274,13 @@ export class TodoListTest extends BrowserTestCase {
 }
 ```
 
-# Contributing
+## Examples
+
+* Contend's test suite is bootstrapped, meaning Contend is tested using itself.
+  Look in the test/ directories of each package to see tests written using
+  Contend.
+
+## Contributing
 
 If you spot a typo, encounter a bug, or have an idea for a feature, feel free to
 open an issue or pull request.

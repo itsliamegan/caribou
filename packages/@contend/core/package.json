@@ -4,8 +4,11 @@
   "version": "0.2.0",
   "license": "MIT",
   "main": "lib/index.js",
+  "bin": {
+    "contend": "./bin/contend"
+  },
   "scripts": {
-    "test": "./bin/contend"
+    "test": "contend"
   },
   "dependencies": {
     "@contend/assertions": "^0.2.0",

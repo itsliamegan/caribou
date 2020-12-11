@@ -1,13 +1,14 @@
 {
-  "name": "@contend/assertions",
-  "description": "Assertions for Contend",
+  "name": "@contend/doubles",
+  "description": "Test doubles for Contend",
   "version": "0.2.0",
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
-    "test": "../core/bin/contend"
+    "test": "contend"
   },
   "dependencies": {
+    "@contend/core": "^0.2.0",
     "@contend/support": "^0.2.0"
   },
   "devDependencies": {}
