@@ -1,4 +1,5 @@
 import { TestCase } from ".."
+import { assert_equal } from "../lib/assertions"
 import { InstanceStub } from "../lib/instance_stub"
 
 export class InstanceStubTest extends TestCase {
@@ -7,7 +8,7 @@ export class InstanceStubTest extends TestCase {
 
     stub.stubs.property("property").value("value")
 
-    this.assert_equal("value", stub.property)
+    assert_equal("value", stub.property)
   }
 
   "test stubbing methods"() {
@@ -15,6 +16,6 @@ export class InstanceStubTest extends TestCase {
 
     stub.stubs.method("method").returns("value")
 
-    this.assert_equal("value", stub.method())
+    assert_equal("value", stub.method())
   }
 }

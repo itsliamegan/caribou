@@ -1,4 +1,11 @@
 import { TestCase } from ".."
+import {
+  assert,
+  assert_not,
+  assert_equal,
+  assert_throws,
+  assert_not_throws
+} from "../lib/assertions"
 import { InstanceMock } from "../lib/instance_mock"
 import { AssertionError } from "../lib/errors/assertion_error"
 
@@ -8,7 +15,7 @@ export class InstanceMockTest extends TestCase {
 
     mock.expects("method").returns("value")
 
-    this.assert_equal("value", mock.method())
+    assert_equal("value", mock.method())
   }
 
   "test expecting a method multiple times uses the last return value"() {
@@ -18,7 +25,7 @@ export class InstanceMockTest extends TestCase {
     mock.expects("method").returns("second")
     mock.expects("method").returns("third")
 
-    this.assert_equal("third", mock.method())
+    assert_equal("third", mock.method())
   }
 
   "test verifies that a method was called"() {
@@ -29,8 +36,8 @@ export class InstanceMockTest extends TestCase {
     uncalled.expects("method")
     called.method()
 
-    this.assert(called.satisfied)
-    this.assert(uncalled.unsatisfied)
+    assert(called.satisfied)
+    assert(uncalled.unsatisfied)
   }
 
   "test verifies that a method was called with any args by default"() {
@@ -42,10 +49,10 @@ export class InstanceMockTest extends TestCase {
     called_with_no_args.method()
     called_with_some_args.method("arg", "arg")
 
-    this.assert(called_with_no_args.satisfied)
-    this.assert(called_with_some_args.satisfied)
-    this.assert_not(called_with_no_args.received_unexpected_invocation)
-    this.assert_not(called_with_some_args.received_unexpected_invocation)
+    assert(called_with_no_args.satisfied)
+    assert(called_with_some_args.satisfied)
+    assert_not(called_with_no_args.received_unexpected_invocation)
+    assert_not(called_with_some_args.received_unexpected_invocation)
   }
 
   "test verifies that a method was called with specific args"() {
@@ -60,9 +67,9 @@ export class InstanceMockTest extends TestCase {
     called_with_incorrect_args.method("arg")
     called_with_correct_args.method("arg1", "arg2")
 
-    this.assert(called_with_no_args.unsatisfied)
-    this.assert(called_with_incorrect_args.unsatisfied)
-    this.assert(called_with_correct_args.satisfied)
+    assert(called_with_no_args.unsatisfied)
+    assert(called_with_incorrect_args.unsatisfied)
+    assert(called_with_correct_args.satisfied)
   }
 
   "test verifies that a method was called multiple times with different args"() {
@@ -80,9 +87,9 @@ export class InstanceMockTest extends TestCase {
     called_twice.method("arg1")
     called_twice.method("arg2")
 
-    this.assert(not_called.unsatisfied)
-    this.assert(called_once.unsatisfied)
-    this.assert(called_twice.satisfied)
+    assert(not_called.unsatisfied)
+    assert(called_once.unsatisfied)
+    assert(called_twice.satisfied)
   }
 
   "test verifies that a method was only called with the correct args"() {
@@ -92,7 +99,7 @@ export class InstanceMockTest extends TestCase {
     mock.method("arg")
     mock.method()
 
-    this.assert(mock.received_unexpected_invocation)
+    assert(mock.received_unexpected_invocation)
   }
 
   "test throws an error when verified if it's unsatisfied"() {
@@ -103,7 +110,7 @@ export class InstanceMockTest extends TestCase {
     unsatisfied.expects("method")
     satisfied.method()
 
-    this.assert_not_throws(() => satisfied.verify())
-    this.assert_throws(() => unsatisfied.verify(), AssertionError)
+    assert_not_throws(() => satisfied.verify())
+    assert_throws(() => unsatisfied.verify(), AssertionError)
   }
 }

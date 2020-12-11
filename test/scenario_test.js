@@ -1,4 +1,5 @@
 import { TestCase, stub } from ".."
+import { assert_equal } from "../lib/assertions"
 import { Scenario } from "../lib/scenario"
 
 export class ScenarioTest extends TestCase {
@@ -7,6 +8,6 @@ export class ScenarioTest extends TestCase {
     test.stubs.method("test method")
     let scenario = new Scenario(test, test["test method"])
 
-    this.assert_equal("method", scenario.name)
+    assert_equal("method", scenario.name)
   }
 }

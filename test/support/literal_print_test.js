@@ -1,13 +1,14 @@
 import { TestCase } from "../.."
+import { assert_equal } from "../../lib/assertions"
 import { literal_print } from "../../lib/support/literal_print"
 
 export class LiteralPrintTest extends TestCase {
   "test literal_print"() {
-    this.assert_equal('"string"', literal_print("string"))
-    this.assert_equal("1", literal_print(1))
-    this.assert_equal("true", literal_print(true))
-    this.assert_equal("null", literal_print(null))
-    this.assert_equal("undefined", literal_print(undefined))
-    this.assert_equal('[1, true, "three"]', literal_print([1, true, "three"]))
+    assert_equal('"string"', literal_print("string"))
+    assert_equal("1", literal_print(1))
+    assert_equal("true", literal_print(true))
+    assert_equal("null", literal_print(null))
+    assert_equal("undefined", literal_print(undefined))
+    assert_equal('[1, true, "three"]', literal_print([1, true, "three"]))
   }
 }

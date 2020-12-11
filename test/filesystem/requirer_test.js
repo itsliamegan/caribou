@@ -1,5 +1,6 @@
 import path from "path"
 import { TestCase } from "../.."
+import { assert } from "../../lib/assertions"
 import { Requirer } from "../../lib/filesystem/requirer"
 
 export class RequirerTest extends TestCase {
@@ -13,8 +14,8 @@ export class RequirerTest extends TestCase {
 
     let exports = requirer.exports
 
-    this.assert(exports.includes(1))
-    this.assert(exports.includes(2))
-    this.assert(exports.includes("default"))
+    assert(exports.includes(1))
+    assert(exports.includes(2))
+    assert(exports.includes("default"))
   }
 }

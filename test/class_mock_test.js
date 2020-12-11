@@ -1,4 +1,5 @@
 import { TestCase } from ".."
+import { assert_equal } from "../lib/assertions"
 import { ClassMock } from "../lib/class_mock"
 
 export class ClassMockTest extends TestCase {
@@ -8,7 +9,7 @@ export class ClassMockTest extends TestCase {
 
     mock.expects("method").returns("value")
 
-    this.assert_equal("value", ExampleClass.method())
+    assert_equal("value", ExampleClass.method())
   }
 
   "test resets stubbed methods when verified"() {
@@ -19,6 +20,6 @@ export class ClassMockTest extends TestCase {
     ExampleClass.method();
     mock.verify()
 
-    this.assert_equal(undefined, ExampleClass.method)
+    assert_equal(undefined, ExampleClass.method)
   }
 }

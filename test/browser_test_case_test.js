@@ -1,4 +1,5 @@
 import { TestCase, stub } from ".."
+import { assert_equal, assert_not_equal } from "../lib/assertions"
 import { BrowserTestCase } from "../lib/browser_test_case"
 
 export class BrowserTestCaseTest extends TestCase {
@@ -19,8 +20,8 @@ export class BrowserTestCaseTest extends TestCase {
 
     await test.run()
 
-    this.assert_not_equal(undefined, global_window)
-    this.assert_not_equal(undefined, global_document)
+    assert_not_equal(undefined, global_window)
+    assert_not_equal(undefined, global_document)
   }
 
   async "test uses the html property to create the DOM"() {
@@ -48,7 +49,7 @@ export class BrowserTestCaseTest extends TestCase {
 
     await test.run()
 
-    this.assert_equal(3, paragraphs.length)
+    assert_equal(3, paragraphs.length)
   }
 
   async "test queries for a single element"() {
@@ -73,6 +74,6 @@ export class BrowserTestCaseTest extends TestCase {
 
     await test.run()
 
-    this.assert_equal("element", element.id)
+    assert_equal("element", element.id)
   }
 }

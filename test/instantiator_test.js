@@ -1,4 +1,5 @@
 import { TestCase, stub } from ".."
+import { assert_equal } from "../lib/assertions"
 import { Instantiator } from "../lib/instantiator"
 
 export class InstantiatorTest extends TestCase {
@@ -13,6 +14,6 @@ export class InstantiatorTest extends TestCase {
     let suite = instantiator.suite
     let expected_tests = [new FirstTest(bus), new SecondTest(bus)]
 
-    this.assert_equal(expected_tests, suite.tests)
+    assert_equal(expected_tests, suite.tests)
   }
 }

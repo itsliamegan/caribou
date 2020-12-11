@@ -1,14 +1,15 @@
 import { TestCase } from "../.."
+import { assert } from "../../lib/assertions"
 import { deep_equal } from "../../lib/support/deep_equal"
 
 export class DeepEqualTest extends TestCase {
   "test deep_equal primitives of the same"() {
-    this.assert(deep_equal("value", "value"))
-    this.assert(!deep_equal("value", "different"))
+    assert(deep_equal("value", "value"))
+    assert(!deep_equal("value", "different"))
   }
 
   "test deep_equal primitives of different types"() {
-    this.assert(!deep_equal("1", 1))
+    assert(!deep_equal("1", 1))
   }
 
   "test deep_equal arrays"() {
@@ -16,8 +17,8 @@ export class DeepEqualTest extends TestCase {
     let same = [["first", "second"], 2, "2", [["item"]]]
     let different = [["first"], "2", "item"]
 
-    this.assert(deep_equal(array, same))
-    this.assert(!deep_equal(array, different))
+    assert(deep_equal(array, same))
+    assert(!deep_equal(array, different))
   }
 
   "test deep_equal objects"() {
@@ -34,7 +35,7 @@ export class DeepEqualTest extends TestCase {
       additional: "value",
     }
 
-    this.assert(deep_equal(object, same))
-    this.assert(!deep_equal(object, different))
+    assert(deep_equal(object, same))
+    assert(!deep_equal(object, different))
   }
 }

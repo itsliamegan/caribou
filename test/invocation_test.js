@@ -1,4 +1,5 @@
 import { TestCase, stub } from ".."
+import { assert, assert_not, assert_equal } from "../lib/assertions"
 import { Invocation } from "../lib/invocation"
 
 export class InvocationTest extends TestCase {
@@ -6,12 +7,12 @@ export class InvocationTest extends TestCase {
     let receiver = stub("receiver")
     let invocation = new Invocation(receiver, "method", ["arg"])
 
-    this.assert(invocation.matches(receiver, "method", ["arg"]))
-    this.assert(invocation.matches(receiver, "method"))
-    this.assert(invocation.matches(receiver))
-    this.assert_not(invocation.matches({}, "method", ["arg"]))
-    this.assert_not(invocation.matches(receiver, "other_method", ["arg"]))
-    this.assert_not(invocation.matches(receiver, "method", []))
+    assert(invocation.matches(receiver, "method", ["arg"]))
+    assert(invocation.matches(receiver, "method"))
+    assert(invocation.matches(receiver))
+    assert_not(invocation.matches({}, "method", ["arg"]))
+    assert_not(invocation.matches(receiver, "other_method", ["arg"]))
+    assert_not(invocation.matches(receiver, "method", []))
   }
 
   "test toString"() {
@@ -20,7 +21,7 @@ export class InvocationTest extends TestCase {
     let without_args = new Invocation(receiver, "method", [])
     let with_args = new Invocation(receiver, "method", ["arg"])
 
-    this.assert_equal("receiver.method()", without_args.toString())
-    this.assert_equal('receiver.method("arg")', with_args.toString())
+    assert_equal("receiver.method()", without_args.toString())
+    assert_equal('receiver.method("arg")', with_args.toString())
   }
 }

@@ -1,4 +1,5 @@
 import { TestCase } from ".."
+import { assert_equal } from "../lib/assertions"
 import { Event } from "../lib/event"
 
 export class EventTest extends TestCase {
@@ -6,6 +7,6 @@ export class EventTest extends TestCase {
     class ExampleEvent extends Event {}
     let event = new ExampleEvent()
 
-    this.assert_equal(ExampleEvent, event.type)
+    assert_equal(ExampleEvent, event.type)
   }
 }

@@ -1,4 +1,10 @@
 import { TestCase, mock, stub } from ".."
+import {
+  assert,
+  assert_not,
+  assert_equal,
+  assert_not_equal
+} from "../lib/assertions"
 import { Suite } from "../lib/suite"
 import { SuiteStarted } from "../lib/events/suite_started"
 import { SuiteFinished } from "../lib/events/suite_finished"
@@ -48,8 +54,8 @@ export class SuiteTest extends TestCase {
 
     await suite.run()
 
-    this.assert_equal("number", typeof suite.time)
-    this.assert_not_equal(NaN, suite.time)
+    assert_equal("number", typeof suite.time)
+    assert_not_equal(NaN, suite.time)
   }
 
   async "test passed"() {
@@ -75,9 +81,9 @@ export class SuiteTest extends TestCase {
     await failing.run()
     await partially_passing.run()
 
-    this.assert(passing.passed)
-    this.assert_not(failing.passed)
-    this.assert_not(partially_passing.passed)
+    assert(passing.passed)
+    assert_not(failing.passed)
+    assert_not(partially_passing.passed)
   }
 
   async "test failed"() {
@@ -103,8 +109,8 @@ export class SuiteTest extends TestCase {
     await failing.run()
     await partially_passing.run()
 
-    this.assert_not(passing.failed)
-    this.assert(failing.failed)
-    this.assert(partially_passing.failed)
+    assert_not(passing.failed)
+    assert(failing.failed)
+    assert(partially_passing.failed)
   }
 }

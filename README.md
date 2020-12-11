@@ -47,6 +47,7 @@ Below is an example of a typical test file.
 
 ```js
 import { TestCase } from "caribou"
+import { assert_equal } from "caribou/assertions"
 
 export class ArrayTest extends TestCase {
   "test push and pop"() {
@@ -55,7 +56,7 @@ export class ArrayTest extends TestCase {
     array.push("item")
     let item = array.pop()
 
-    this.assert_equal("item", item)
+    assert_equal("item", item)
   }
 }
 ```
@@ -88,7 +89,8 @@ $ ./node_modules/caribou/bin/caribou test/unit/**/*_test.js
 Caribou currently doesn't provide a wide variety of assertions. It provides the
 basic truth and equality checkers, as well as a couple more specialized ones. If
 you feel any are missing, feel free to [contribute them](#contributing). Below
-are a list of all the assertions.
+are a list of all the assertions, which are available to import from the
+`caribou/assertions` namespace.
 
 * `assert(condition, [message])` Asserts that the given condition is truthy
 * `assert_not(condition)` Asserts that the given condition is falsey
@@ -263,7 +265,7 @@ export class TodoListTest extends BrowserTestCase {
     new_field.value = "New Todo"
     add_button.click()
 
-    this.assert_equal(1, list.children.length)
+    assert_equal(1, list.children.length)
   }
 }
 ```

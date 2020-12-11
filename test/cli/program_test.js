@@ -1,4 +1,5 @@
 import { TestCase, stub } from "../.."
+import { assert_equal } from "../../lib/assertions"
 import { Program } from "../../lib/cli/program"
 
 export class ProgramTest extends TestCase {
@@ -9,7 +10,7 @@ export class ProgramTest extends TestCase {
     let stdout = stub("stdout")
     let program = new Program(cwd, argv, stdin, stdout)
 
-    this.assert_equal(["third"], program.arguments)
+    assert_equal(["third"], program.arguments)
   }
 
   "test arguments when there are no additional arguments"() {
@@ -19,6 +20,6 @@ export class ProgramTest extends TestCase {
     let stdout = stub("stdin")
     let program = new Program(cwd, argv, stdin, stdout)
 
-    this.assert_equal([], program.arguments)
+    assert_equal([], program.arguments)
   }
 }

@@ -1,5 +1,6 @@
 import path from "path"
 import { TestCase } from "../.."
+import { assert_equal } from "../../lib/assertions"
 import { Glob } from "../../lib/filesystem/glob"
 
 export class GlobTest extends TestCase {
@@ -13,6 +14,6 @@ export class GlobTest extends TestCase {
       path.resolve(__dirname, "example/subdirectory/file1"),
     ]
 
-    this.assert_equal(expected_files, files)
+    assert_equal(expected_files, files)
   }
 }
