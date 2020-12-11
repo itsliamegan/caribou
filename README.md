@@ -166,8 +166,8 @@ person.stubs.property("name").value("John Smith")
 person.name // "John Smith"
 
 // Stub a method.
-person.stubs.method("toString").returns("Person: John Smith")
-person.toString() // "Person: John Smith"
+person.stubs.method("greet").returns("Hello, John Smith")
+person.greet() // "Hello, John Smith"
 ```
 
 ### Mocks
@@ -257,11 +257,11 @@ export class TodoListTest extends BrowserTestCase {
 
   "test adding items"() {
     let list = this.element("#todo-list")
-    let addButton = this.element("#add-todo")
-    let newField = this.element("#new-todo")
+    let add_button = this.element("#add-todo")
+    let new_field = this.element("#new-todo")
 
-    newField.value = "New Todo"
-    addButton.click()
+    new_field.value = "New Todo"
+    add_button.click()
 
     this.assert_equal(1, list.children.length)
   }
@@ -270,4 +270,5 @@ export class TodoListTest extends BrowserTestCase {
 
 # Contributing
 
-If you spot a bug, have an idea for a feature, or anything else, feel free to open an issue or pull request.
+If you spot a typo, encounter a bug, or have an idea for a feature, feel free to
+open an issue or pull request.
