@@ -1,7 +1,7 @@
 {
   "name": "@contend/assertions",
   "description": "Assertions for Contend",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "main": "lib/index.js",
   "files": [
@@ -11,7 +11,7 @@
     "test": "contend"
   },
   "dependencies": {
-    "@contend/support": "^0.2.0"
+    "@contend/support": "^0.2.1"
   },
   "publishConfig": {
     "access": "public"

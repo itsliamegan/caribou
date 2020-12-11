@@ -1,7 +1,7 @@
 {
   "name": "contend",
   "description": "An xUnit-style testing framework",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "author": "Liam Egan",
   "repository": "https://github.com/itsliamegan/contend",
@@ -16,9 +16,9 @@
     "test": "contend"
   },
   "dependencies": {
-    "@contend/assertions": "^0.2.0",
-    "@contend/core": "^0.2.0",
-    "@contend/doubles": "^0.2.0"
+    "@contend/assertions": "^0.2.1",
+    "@contend/core": "^0.2.1",
+    "@contend/doubles": "^0.2.1"
   },
   "publishConfig": {
     "access": "public"

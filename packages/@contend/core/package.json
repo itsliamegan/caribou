@@ -1,7 +1,7 @@
 {
   "name": "@contend/core",
   "description": "The core elements of Contend",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "main": "lib/index.js",
   "files": [
@@ -15,8 +15,8 @@
     "test": "contend"
   },
   "dependencies": {
-    "@contend/assertions": "^0.2.0",
-    "@contend/support": "^0.2.0",
+    "@contend/assertions": "^0.2.1",
+    "@contend/support": "^0.2.1",
     "esm": "^3.2.25",
     "fast-glob": "^3.2.4",
     "jsdom": "^16.4.0"
