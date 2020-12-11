@@ -7,10 +7,10 @@
   "repository": "https://github.com/itsliamegan/contend",
   "main": "index.js",
   "files": [
-    "assertion.js",
+    "assertions.js",
     "doubles.js",
     "index.js",
-    "../../README.md"
+    "README.md"
   ],
   "scripts": {
     "test": "contend"
