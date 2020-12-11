@@ -1,18 +1,17 @@
 {
   "name": "contend",
   "description": "An xUnit-style testing framework",
+  "private": true,
   "version": "0.2.0",
   "license": "MIT",
   "author": "Liam Egan",
   "repository": "https://github.com/itsliamegan/contend",
-  "main": "lib/index.js",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "test": "./bin/contend"
+    "test": "yarn workspaces run test"
   },
-  "dependencies": {
-    "esm": "^3.2.25",
-    "globby": "^11.0.1",
-    "jsdom": "^16.4.0"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }

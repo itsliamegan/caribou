@@ -1,0 +1,14 @@
+{
+  "name": "@contend/assertions",
+  "description": "Assertions for Contend",
+  "version": "0.2.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "../core/bin/contend"
+  },
+  "dependencies": {
+    "@contend/support": "^0.2.0"
+  },
+  "devDependencies": {}
+}

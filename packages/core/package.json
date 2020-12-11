@@ -1,0 +1,18 @@
+{
+  "name": "@contend/core",
+  "description": "The core elements of Contend",
+  "version": "0.2.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "./bin/contend"
+  },
+  "dependencies": {
+    "@contend/assertions": "^0.2.0",
+    "@contend/support": "^0.2.0",
+    "esm": "^3.2.25",
+    "globby": "^11.0.1",
+    "jsdom": "^16.4.0"
+  },
+  "devDependencies": {}
+}

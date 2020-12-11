@@ -1,0 +1,14 @@
+{
+  "name": "@contend/support",
+  "description": "Common helpers for Contend",
+  "version": "0.2.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "../core/bin/contend"
+  },
+  "dependencies": {
+    "@contend/core": "^0.2.0"
+  },
+  "devDependencies": {}
+}
