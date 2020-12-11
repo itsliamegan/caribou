@@ -6,6 +6,12 @@
   "author": "Liam Egan",
   "repository": "https://github.com/itsliamegan/contend",
   "main": "index.js",
+  "files": [
+    "assertion.js",
+    "doubles.js",
+    "index.js",
+    "../../README.md"
+  ],
   "scripts": {
     "test": "contend"
   },
