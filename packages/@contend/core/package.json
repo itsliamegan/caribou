@@ -4,6 +4,10 @@
   "version": "0.2.0",
   "license": "MIT",
   "main": "lib/index.js",
+  "files": [
+    "bin/contend",
+    "lib/*"
+  ],
   "bin": {
     "contend": "./bin/contend"
   },
