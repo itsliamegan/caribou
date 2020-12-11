@@ -1,5 +1,5 @@
-import { TestCase } from "@contend/core"
-import { mock, stub } from "@contend/doubles"
+import { TestCase } from "contend"
+import { mock, stub } from "contend/doubles"
 import { Reporter } from "../lib/reporter"
 import { SuiteStarted } from "../lib/events/suite_started"
 import { SuiteFinished } from "../lib/events/suite_finished"

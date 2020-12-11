@@ -1,5 +1,5 @@
-import { TestCase } from "@contend/core"
-import { mock } from "@contend/doubles"
+import { TestCase } from "contend"
+import { mock } from "contend/doubles"
 import { StdoutSink } from "../lib/stdout_sink"
 import { Color } from "../lib/color"
 import { ANSI } from "../lib/ansi"

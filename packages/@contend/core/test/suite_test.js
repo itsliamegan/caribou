@@ -1,11 +1,11 @@
-import { TestCase } from "@contend/core"
+import { TestCase } from "contend"
 import {
   assert,
   assert_not,
   assert_equal,
   assert_not_equal
-} from "@contend/assertions"
-import { mock, stub } from "@contend/doubles"
+} from "contend/assertions"
+import { mock, stub } from "contend/doubles"
 import { Suite } from "../lib/suite"
 import { SuiteStarted } from "../lib/events/suite_started"
 import { SuiteFinished } from "../lib/events/suite_finished"

@@ -1,5 +1,5 @@
-import { TestCase } from "@contend/core"
-import { assert_equal } from "@contend/assertions"
+import { TestCase } from "contend"
+import { assert_equal } from "contend/assertions"
 import { ClassStub } from "../lib/class_stub"
 
 export class ClassStubTest extends TestCase {

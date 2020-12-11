@@ -1,6 +1,6 @@
-import { TestCase } from "@contend/core"
-import { assert, assert_not, assert_equal } from "@contend/assertions"
-import { stub } from "@contend/doubles"
+import { TestCase } from "contend"
+import { assert, assert_not, assert_equal } from "contend/assertions"
+import { stub } from "contend/doubles"
 import { Invocation } from "../lib/invocation"
 
 export class InvocationTest extends TestCase {

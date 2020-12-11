@@ -1,6 +1,6 @@
 import path from "path"
-import { TestCase } from "@contend/core"
-import { assert_equal } from "@contend/assertions"
+import { TestCase } from "contend"
+import { assert_equal } from "contend/assertions"
 import { Glob } from "../../lib/filesystem/glob"
 
 export class GlobTest extends TestCase {

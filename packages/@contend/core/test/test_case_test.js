@@ -1,5 +1,5 @@
-import { assert, assert_not, assert_equal } from "@contend/assertions"
-import { mock, stub } from "@contend/doubles"
+import { assert, assert_not, assert_equal } from "contend/assertions"
+import { mock, stub } from "contend/doubles"
 import { TestCase } from "../lib/test_case"
 import { TestCaseStarted } from "../lib/events/test_case_started"
 import { TestCaseFinished } from "../lib/events/test_case_finished"

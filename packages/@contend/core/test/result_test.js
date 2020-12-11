@@ -1,6 +1,6 @@
-import { TestCase } from "@contend/core"
-import { assert_equal } from "@contend/assertions"
-import { stub } from "@contend/doubles"
+import { TestCase } from "contend"
+import { assert_equal } from "contend/assertions"
+import { stub } from "contend/doubles"
 import { Result } from "../lib/result"
 
 export class ResultTest extends TestCase {

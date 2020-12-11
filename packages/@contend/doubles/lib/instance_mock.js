@@ -1,4 +1,4 @@
-import { AssertionError } from "@contend/assertions"
+import { AssertionError } from "contend/assertions"
 import { InstanceStub } from "./instance_stub"
 import { Expectation } from "./expectation"
 import { Invocation } from "./invocation"

@@ -1,5 +1,5 @@
-import { TestCase } from "@contend/core"
-import { assert } from "@contend/assertions"
+import { TestCase } from "contend"
+import { assert } from "contend/assertions"
 import { deep_equal } from "../lib/deep_equal"
 
 export class DeepEqualTest extends TestCase {

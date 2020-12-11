@@ -1,6 +1,6 @@
-import { TestCase } from "@contend/core"
-import { assert_equal, assert_not_equal } from "@contend/assertions"
-import { stub } from "@contend/doubles"
+import { TestCase } from "contend"
+import { assert_equal, assert_not_equal } from "contend/assertions"
+import { stub } from "contend/doubles"
 import { BrowserTestCase } from "../lib/browser_test_case"
 
 export class BrowserTestCaseTest extends TestCase {

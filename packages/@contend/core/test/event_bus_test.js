@@ -1,5 +1,5 @@
-import { TestCase } from "@contend/core"
-import { mock } from "@contend/doubles"
+import { TestCase } from "contend"
+import { mock } from "contend/doubles"
 import { EventBus } from "../lib/event_bus"
 import { Event } from "../lib/event"
 

@@ -1,4 +1,4 @@
-import { AssertionError } from "@contend/assertions"
+import { AssertionError } from "contend/assertions"
 
 export class Scenario {
   constructor(test, method) {

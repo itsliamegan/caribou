@@ -1,5 +1,5 @@
-import { TestCase } from "@contend/core"
-import { assert_throws, assert_not_throws, AssertionError } from "@contend/assertions"
+import { TestCase } from "contend"
+import { assert_throws, assert_not_throws, AssertionError } from "contend/assertions"
 import { assert } from "../lib/assert"
 
 export class AssertTest extends TestCase {

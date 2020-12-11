@@ -1,6 +1,6 @@
-import { TestCase } from "@contend/core"
-import { assert_equal } from "@contend/assertions"
-import { stub } from "@contend/doubles"
+import { TestCase } from "contend"
+import { assert_equal } from "contend/assertions"
+import { stub } from "contend/doubles"
 import { Program } from "../../lib/cli/program"
 
 export class ProgramTest extends TestCase {

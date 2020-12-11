@@ -1,5 +1,5 @@
-import { TestCase } from "@contend/core"
-import { assert_equal } from "@contend/assertions"
+import { TestCase } from "contend"
+import { assert_equal } from "contend/assertions"
 import { ClassMock } from "../lib/class_mock"
 
 export class ClassMockTest extends TestCase {

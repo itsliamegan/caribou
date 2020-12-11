@@ -1,4 +1,4 @@
-import { TestCase } from "@contend/core"
+import { TestCase } from "contend"
 import {
   assert,
   assert_not,
@@ -6,7 +6,7 @@ import {
   assert_throws,
   assert_not_throws,
   AssertionError
-} from "@contend/assertions"
+} from "contend/assertions"
 import { InstanceMock } from "../lib/instance_mock"
 
 export class InstanceMockTest extends TestCase {
