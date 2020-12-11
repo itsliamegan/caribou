@@ -55,7 +55,7 @@ export class TestCase {
 
   get scenarios() {
     return this.scenario_methods.map(
-      scenario_method => new Scenario(this, scenario_method)
+      method => new Scenario(this, new this.constructor(this.bus), method)
     )
   }
 

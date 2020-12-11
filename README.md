@@ -119,7 +119,9 @@ passing case, and throw an `AssertionError` in a failing case.
 
 You can hook into the lifecycle of the test runs by defining `setup` and/or
 `teardown` methods on your test classes. `setup` is run once before every test
-scenario, and `teardown` is run once after every test scenario.
+scenario, and `teardown` is run once after every test scenario. **Bear in mind,
+each scenario is run in a separate instance of the test class, so shared state
+on the test instance will not persist between scenarios.**
 
 ```js
 import { TestCase } from "contend"

@@ -1,14 +1,15 @@
 import { AssertionError } from "contend/assertions"
 
 export class Scenario {
-  constructor(test, method) {
+  constructor(test, instance, method) {
     this.test = test
+    this.instance = instance
     this.method = method
   }
 
   async run() {
     try {
-      await this.method.apply(this.test)
+      await this.method.apply(this.instance)
       this.test.pass(this)
     } catch (error) {
       let message = error.message

@@ -28,17 +28,21 @@ class PartiallyPassingTest extends TestCase {
 
 export class TestCaseTest extends TestCase {
   async "test runs all the test methods"() {
+    let ran_first_test = false
+    let ran_second_test = false
+    let ran_unrelated_method = false
+
     class ExampleTest extends TestCase {
       "test method one"() {
-        this.ran_first_test = true
+        ran_first_test = true
       }
 
       "test method two"() {
-        this.ran_second_test = true
+        ran_second_test = true
       }
 
       "unrelated method"() {
-        this.ran_unrelated_method = true
+        ran_unrelated_method = true
       }
     }
 
@@ -48,17 +52,18 @@ export class TestCaseTest extends TestCase {
 
     await test.run()
 
-    assert(test.ran_first_test)
-    assert(test.ran_second_test)
-    assert_not(test.ran_unrelated_method)
+    assert(ran_first_test)
+    assert(ran_second_test)
+    assert_not(ran_unrelated_method)
   }
 
   async "test runs async test methods"() {
+    let ran_async_test = false
+
     class AsynchronousTest extends TestCase {
       async "test asynchronous"() {
         await Promise.resolve()
-
-        this.ran_async_test = true
+        ran_async_test = true
       }
     }
 
@@ -68,7 +73,7 @@ export class TestCaseTest extends TestCase {
 
     await test.run()
 
-    assert(test.ran_async_test)
+    assert(ran_async_test)
   }
 
   async "test posts lifecycle events"() {
@@ -84,15 +89,16 @@ export class TestCaseTest extends TestCase {
   }
 
   async "test runs lifecycle metohds around each scenario"() {
+    let setup_ran_times = 0
+    let teardown_ran_times = 0
+
     class WithLifecycles extends TestCase {
       setup() {
-        this.setup_ran_times = this.setup_ran_times || 0
-        this.setup_ran_times++
+        setup_ran_times++
       }
 
       teardown() {
-        this.teardown_ran_times = this.teardown_ran_times || 0
-        this.teardown_ran_times++
+        teardown_ran_times++
       }
 
       "test first"() {}
@@ -106,20 +112,23 @@ export class TestCaseTest extends TestCase {
 
     await test.run()
 
-    assert_equal(2, test.setup_ran_times)
-    assert_equal(2, test.teardown_ran_times)
+    assert_equal(2, setup_ran_times)
+    assert_equal(2, teardown_ran_times)
   }
 
   async "test runs async lifecycle methods"() {
+    let setup_ran = false
+    let teardown_ran = false
+
     class WithLifecycles extends TestCase {
       async setup() {
         await Promise.resolve()
-        this.setup_ran = true
+        setup_ran = true
       }
 
       async teardown() {
         await Promise.resolve()
-        this.teardown_ran = true
+        teardown_ran = true
       }
 
       "test method"() {}
@@ -131,8 +140,34 @@ export class TestCaseTest extends TestCase {
 
     await test.run()
 
-    assert(test.setup_ran)
-    assert(test.teardown_ran)
+    assert(setup_ran)
+    assert(teardown_ran)
+  }
+
+  async "test runs each scenario in a separate instance"() {
+    let property_before_mutation
+
+    class SharedState extends TestCase {
+      state = {}
+
+      "test mutate"() {
+        property_before_mutation = this.state.property
+        this.state.property = "mutate"
+      }
+
+      "test mutate again"() {
+        property_before_mutation = this.state.property
+        this.state.property = "mutate again"
+      }
+    }
+
+    let bus = stub("bus")
+    bus.stubs.method("post")
+
+    let test = new SharedState(bus)
+    await test.run()
+
+    assert_equal(undefined, property_before_mutation)
   }
 
   async "test passed"() {
