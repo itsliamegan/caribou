@@ -1,7 +1,7 @@
 {
   "name": "contend",
   "description": "An xUnit-style testing framework",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "license": "MIT",
   "author": "Liam Egan",
   "repository": "https://github.com/itsliamegan/contend",
