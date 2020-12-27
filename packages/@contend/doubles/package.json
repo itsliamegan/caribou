@@ -1,7 +1,7 @@
 {
   "name": "@contend/doubles",
   "description": "Test doubles for Contend",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "license": "MIT",
   "main": "lib/index.js",
   "files": [
@@ -11,8 +11,8 @@
     "test": "contend"
   },
   "dependencies": {
-    "@contend/core": "^0.2.1",
-    "@contend/support": "^0.2.1"
+    "@contend/core": "^0.3.0",
+    "@contend/support": "^0.3.0"
   },
   "publishConfig": {
     "access": "public"
