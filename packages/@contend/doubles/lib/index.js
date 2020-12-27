@@ -1,28 +1,30 @@
-import { InstanceMock } from "./instance_mock"
-import { ClassMock } from "./class_mock"
-import { InstanceStub } from "./instance_stub"
-import { ClassStub } from "./class_stub"
+import { Mock } from "./mock"
+import { Stub } from "./stub"
 
-export function mock(name_or_class) {
-  let should_mock_class = typeof name_or_class == "function"
+export function mock(name_or_klass) {
+  if (typeof name_or_klass == "function") {
+    let klass = name_or_klass
+    let descriptor = klass.name
 
-  if (should_mock_class) {
-    let klass = name_or_class
-    return new ClassMock(klass)
+    return new Mock(descriptor, klass)
   } else {
-    let name = name_or_class
-    return new InstanceMock(name)
+    let name = name_or_klass
+    let descriptor = `mock("${name}")`
+
+    return new Mock(descriptor)
   }
 }
 
-export function stub(name_or_class) {
-  let should_stub_class = typeof name_or_class == "function"
+export function stub(name_or_klass) {
+  if (typeof name_or_klass == "function") {
+    let klass = name_or_klass
+    let descriptor = klass.name
 
-  if (should_stub_class) {
-    let klass = name_or_class
-    return new ClassStub(klass)
+    return new Stub(descriptor, klass)
   } else {
-    let name = name_or_class
-    return new InstanceStub(name)
+    let name = name_or_klass
+    let descriptor = `stub("${name}")`
+
+    return new Stub(descriptor)
   }
 }

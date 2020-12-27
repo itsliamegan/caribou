@@ -1,4 +1,4 @@
-import { deep_equal, literal_print } from "@contend/support"
+import { literal_print } from "@contend/support"
 
 export class Invocation {
   constructor(receiver, method, args) {
@@ -7,25 +7,15 @@ export class Invocation {
     this.args = args
   }
 
-  matches(receiver, method, args) {
-    if (receiver && method && args) {
-      return (
-        this.receiver == receiver &&
-        this.method == method &&
-        deep_equal(this.args, args)
-      )
-    } else if (receiver && method) {
-      return this.receiver == receiver && this.method == method
-    } else if (receiver) {
-      return this.receiver == receiver
-    }
+  matches(method, args_matcher) {
+    return method == this.method && args_matcher.matches(this.args)
   }
 
   toString() {
-    return `${this.receiver.toString()}.${this.method}(${this.literal_args})`
+    return `${this.receiver}.${this.method}(${this.literal_printed_args_without_brackets})`
   }
 
-  get literal_args() {
+  get literal_printed_args_without_brackets() {
     return literal_print(this.args).slice(1, -1)
   }
 }

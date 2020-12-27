@@ -1,63 +1,32 @@
+import { AnythingMatcher } from "./matchers/anything_matcher"
+import { ArgumentsMatcher } from "./matchers/arguments_matcher"
 import { Invocation } from "./invocation"
 
 export class Expectation {
-  constructor(mock, method) {
+  constructor(mock, receiver, method) {
     this.mock = mock
+    this.receiver = receiver
     this.method = method
-    this.expected_args = undefined
-
-    this.mock.stub_expected_method(this.method)
+    this.args_matcher = new AnythingMatcher()
   }
 
-  with(...args) {
-    this.expected_args = args
-
-    return this
+  matches(method, args) {
+    return method == this.method && this.args_matcher.matches(args)
   }
 
-  returns(value) {
-    this.mock.stub_expected_method(this.method, value)
+  set expected_args(args) {
+    this.args_matcher = new ArgumentsMatcher(args)
   }
 
-  satisfied_by(invocation) {
-    if (!this.expects_args) {
-      return invocation.matches(this.mock, this.method)
-    }
-
-    return invocation.matches(this.mock, this.method, this.expected_args || [])
+  get is_unsatisfied() {
+    return this.mock.has_no_invocations_matching(this.method, this.args_matcher)
   }
 
-  get satisfied() {
-    return this.invoked && this.invoked_with_correct_args
-  }
-
-  get unsatisfied() {
-    return !this.satisfied
+  get expected_invocation() {
+    return new Invocation(this.receiver, this.method, [])
   }
 
   toString() {
-    let invocation = new Invocation(
-      this.mock,
-      this.method,
-      this.expected_args || []
-    )
-
-    return invocation.toString()
-  }
-
-  get invoked() {
-    return this.mock.invoked(this.method)
-  }
-
-  get invoked_with_correct_args() {
-    if (!this.expects_args) {
-      return true
-    }
-
-    return this.mock.invoked_with_args(this.method, this.expected_args)
-  }
-
-  get expects_args() {
-    return this.expected_args != undefined
+    return this.expected_invocation.toString()
   }
 }
